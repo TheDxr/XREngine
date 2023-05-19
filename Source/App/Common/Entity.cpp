@@ -11,7 +11,8 @@ int Entity::GetId() const { return mId; }
 void Entity::SetId(int id) { mId = id; }
 void Entity::Render(ShaderProgram &shader)
 {
-    static Model baseModel("Assets/base.obj");
+    // TODO: Render the model
+    static Model baseModel("../../Assets/base.obj");
     baseModel.Render(shader);
 }
 void Entity::SetTransform(const Transform &transform) { mTransform = transform; }

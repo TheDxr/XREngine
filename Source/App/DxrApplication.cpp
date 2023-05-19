@@ -10,8 +10,8 @@
 #include "Camera.h"
 #include "Common/Light/LightDirectional.h"
 #include "Common/Model/Scene.h"
-#include "Common/Model/Texture.h"
 #include "Common/Utils.h"
+#include "Texture.h"
 #include "UI/EmbeddedUI.h"
 #include "glError.h"
 
@@ -56,9 +56,9 @@ DxrApplication::DxrApplication() :
                                                            glm::vec3(0.9f, 0.9f, 1.0f));
     pLightPoint       = std::make_shared<LightPoint>(glm::vec3(1.0f, 8.0f, 3.0f));
 
-    models.emplace_back(std::make_shared<Model>("D:/SourceCode/CppCode/OpenGL/Assets/test/utah-teapot.obj"));
+    models.emplace_back(std::make_shared<Model>("D:/SourceCode/CppCode/Dxr3DEngine/Assets/test/utah-teapot.obj"));
     models[0]->SetPosition(glm::vec3(0.0f, 2.3f, -2.0f));
-    models.emplace_back(std::make_shared<Model>("D:/SourceCode/CppCode/OpenGL/Assets/nanosuit/nanosuit.obj"));
+    models.emplace_back(std::make_shared<Model>("D:/SourceCode/CppCode/Dxr3DEngine/Assets/nanosuit/nanosuit.obj"));
     // models.emplace_back(std::make_shared<Model>("D:/SourceCode/CppCode/OpenGL/Assets/test/test.obj"));
 
 #pragma endregion

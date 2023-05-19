@@ -49,12 +49,12 @@ add_executable(${PROJECT_NAME} ${Main} ${src} ${inc} ${deps})
 target_include_directories(${PROJECT_NAME} PUBLIC "D:/ProgramData/imgui-1.89.5")
 target_include_directories(${PROJECT_NAME} PUBLIC "D:/ProgramData/imgui-1.89.5/backends")
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CORE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${OPENGL_CORE_DIR})
 target_include_directories(${PROJECT_NAME} PUBLIC ${COMPONENT_DIR})
 
 #target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE assimp::assimp)
-target_link_libraries(${PROJECT_NAME} PRIVATE Core)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenGLCore)
 #target_link_libraries(${PROJECT_NAME} PRIVATE Common)
 target_link_libraries(${PROJECT_NAME} PRIVATE Components)
 

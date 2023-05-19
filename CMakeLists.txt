@@ -18,7 +18,7 @@ set(DEP_DIR "${PROJECT_SOURCE_DIR}/Dependencies")
 set(SOURCE_DIR "${PROJECT_SOURCE_DIR}/Source")
 set(SHADER_DIR "${PROJECT_SOURCE_DIR}/Shaders")
 set(COMMON_DIR "${PROJECT_SOURCE_DIR}/Source/App/Common")
-set(CORE_DIR "${PROJECT_SOURCE_DIR}/Source/Engine/Core")
+set(OPENGL_CORE_DIR "${PROJECT_SOURCE_DIR}/Source/Engine/OpenGL")
 set(COMPONENT_DIR "${PROJECT_SOURCE_DIR}/Source/Engine/Components")
 
 #set(GLFW_INCLUDE_DIR "D:/Program Files/vcpkg/packages/glfw3_x64-windows/include")
