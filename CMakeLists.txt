@@ -20,9 +20,10 @@ set(ENGINE_DIR "${PROJECT_SOURCE_DIR}/Source/Engine")
 
 
 set(GLM_INCLUDE_DIR "D:/Program Files/vcpkg/packages/glm_x64-windows/include")
+set(SPDLOG_INCLUDE_DIR ${DEP_DIR}/spdlog/include)
 set(IMGUI_INCLUDE_DIR  "D:/ProgramData/imgui-1.89.5"
         "D:/ProgramData/imgui-1.89.5/backends")
-
+set(VULKAN_SDK_DIR D:/VulkanSDK/1.3.216.0)
 
 add_definitions(-DUNICODE)
 add_definitions(-D_UNICODE)

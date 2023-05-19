@@ -7,7 +7,7 @@
 #include <vector>
 #include <vulkan/vulkan_core.h>
 
-namespace dxr
+namespace Dxr
 {
 
 struct PipelineConfigInfo
@@ -36,15 +36,15 @@ public:
     Pipeline(const Pipeline &)       = delete;
     void operator=(const Pipeline &) = delete;
 
-    void bind(VkCommandBuffer commandBuffer);
-    static PipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
+    void Bind(VkCommandBuffer commandBuffer);
+    static PipelineConfigInfo DefaultPipelineConfigInfo(uint32_t width, uint32_t height);
 
 private:
-    static std::vector<char> readFile(const std::string &filepath);
-    void createGraphicsPipeline(const std::string &vertFilePath, const std::string &fragFilePath,
+    static std::vector<char> ReadFile(const std::string &filepath);
+    void CreateGraphicsPipeline(const std::string &vertFilePath, const std::string &fragFilePath,
                                 const PipelineConfigInfo &configInfo);
 
-    void createShaderModule(const std::vector<char> &code, VkShaderModule *shaderModule);
+    void CreateShaderModule(const std::vector<char> &code, VkShaderModule *shaderModule);
 
     Device &dxrDevice;
     VkPipeline graphicsPipeline;
@@ -52,4 +52,4 @@ private:
     VkShaderModule fragShaderModule;
 };
 
-} // namespace dxr
+} // namespace Dxr

@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 #include <string>
 
 struct GLFWwindow;
@@ -17,10 +15,10 @@ public:
 	Application(Application&&) = delete;
 	Application& operator=(const Application&&) = delete;
 
-	// get the mWindow id
+	// get the window id
 	GLFWwindow* GetWindow();
 
-	// mWindow control
+	// window control
 	void Exit();
 
 	// delta mTime between frame and mTime from beginning

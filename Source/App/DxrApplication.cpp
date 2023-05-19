@@ -7,13 +7,13 @@
 #include <glm/glm.hpp>
 #include <memory>
 
-#include "Camera.h"
+#include "Components/Camera.h"
 #include "Common/Light/LightDirectional.h"
 #include "Common/Model/Scene.h"
 #include "Common/Utils.h"
-#include "Texture.h"
+#include "OpenGL/Texture.h"
 #include "UI/EmbeddedUI.h"
-#include "glError.h"
+#include "OpenGL/glError.h"
 
 using namespace std;
 using namespace glm;

@@ -5,9 +5,9 @@
 #include <string>
 #include <unordered_map>
 
-#include "Material.h"
-#include "Mesh.h"
 #include "../Entity.h"
+#include "OpenGL/Material.h"
+#include "OpenGL/Mesh.h"
 
 class Model : public Entity
 {

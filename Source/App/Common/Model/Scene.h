@@ -2,7 +2,7 @@
 
 #include <filesystem>
 #include "Model.h"
-#include "Shader.h"
+#include "OpenGL/Shader.h"
 class Scene
 {
 public:

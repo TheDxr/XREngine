@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <glad/glad.h>
-#define GLFW_INCLUDE_NONE
+
 #include <GLFW/glfw3.h>
 #include <spdlog/spdlog.h>
 
@@ -25,11 +25,11 @@ Application::Application()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    // create the mWindow
+    // create the window
     mpWindow = glfwCreateWindow(mWidth, mHeight, mTitle.c_str(), NULL, NULL);
     if(!mpWindow) {
         glfwTerminate();
-        throw std::runtime_error("Couldn't create a mWindow");
+        throw std::runtime_error("Couldn't create a window");
     }
     
     glfwMakeContextCurrent(mpWindow);
@@ -69,7 +69,7 @@ Application::Application(int width, int height,int posX, int posY, std::string t
     mpWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     if(!mpWindow) {
         glfwTerminate();
-        throw std::runtime_error("Couldn't create a mWindow");
+        throw std::runtime_error("Couldn't create a window");
     }
 	glfwSetWindowPos(mpWindow, posX, posY);
     glfwMakeContextCurrent(mpWindow);
@@ -97,7 +97,7 @@ void Application::Run()
 {
     mState = stateRun;
 
-    // Make the mWindow's context current
+    // Make the window's context current
     glfwMakeContextCurrent(mpWindow);
 
     mTime = static_cast<float>(glfwGetTime());
@@ -108,7 +108,7 @@ void Application::Run()
         mDeltaTime = t - mTime;
         mTime      = t;
 
-        // detech mWindow related changes
+        // detech window related changes
         DetectWindowDimensionChange();
         if(glfwWindowShouldClose( GetWindow()))
             Exit();

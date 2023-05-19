@@ -2,7 +2,6 @@
 
 #include <string>
 #include <glm/glm.hpp>
-#include <glm/gtx/quaternion.hpp>
 #include "Transform.h"
 
 struct Camera

@@ -78,8 +78,8 @@ void EmbeddedUI::Render() {
         ImGui::End();
     }
     ImGui::Render();
-    //glfwGetFramebufferSize(GetWindow(), &mWidth, &mHeight);
-    //glViewport(0, 0, mWidth, mHeight);
+    //glfwGetFramebufferSize(GetWindow(), &width, &height);
+    //glViewport(0, 0, width, height);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 

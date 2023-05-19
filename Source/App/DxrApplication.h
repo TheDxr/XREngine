@@ -2,10 +2,10 @@
 #define GLFW_INCLUDE_NONE
 #include <memory>
 
-#include "Application.h"
-#include "InputSystem.h"
-#include "Shader.h"
-#include "Camera.h"
+#include "OpenGL/Application.h"
+#include "OpenGL/InputSystem.h"
+#include "OpenGL/Shader.h"
+#include "Components/Camera.h"
 
 #include "Common/Light/LightDirectional.h"
 #include "Common/Light/LightPoint.h"

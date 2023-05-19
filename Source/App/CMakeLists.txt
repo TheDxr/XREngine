@@ -2,24 +2,19 @@ cmake_minimum_required(VERSION 3.22)
 set(PROJECT_NAME Application)
 
 
-find_package(glfw3 CONFIG REQUIRED)
-find_package(glm CONFIG REQUIRED)
-find_package(glad CONFIG REQUIRED)
 find_package(assimp CONFIG REQUIRED)
-find_package(spdlog CONFIG REQUIRED)
 find_package(rapidjson CONFIG REQUIRED)
 
 set(Main "main.cpp")
 
 set(deps
-    ${DEP_DIR}/glad.c
-    ${DEP_DIR}/imgui.cpp
-    ${DEP_DIR}/imgui_demo.cpp
-    ${DEP_DIR}/imgui_draw.cpp
-    ${DEP_DIR}/imgui_impl_glfw.cpp
-    ${DEP_DIR}/imgui_impl_opengl3.cpp
-    ${DEP_DIR}/imgui_tables.cpp
-    ${DEP_DIR}/imgui_widgets.cpp
+    ${DEP_DIR}/imgui/imgui.cpp
+    ${DEP_DIR}/imgui/imgui_demo.cpp
+    ${DEP_DIR}/imgui/imgui_draw.cpp
+    ${DEP_DIR}/imgui/backends/imgui_impl_glfw.cpp
+    ${DEP_DIR}/imgui/backends/imgui_impl_opengl3.cpp
+    ${DEP_DIR}/imgui/imgui_tables.cpp
+    ${DEP_DIR}/imgui/imgui_widgets.cpp
     ${DEP_DIR}/stb_image.h)
 
 file(GLOB_RECURSE inc ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
@@ -31,10 +26,9 @@ file(GLOB_RECURSE src ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 #        App/Common/*.cpp
 #        DxrApplication.cpp
 #        main.cpp)
-
 #add_dependencies(${PROJECTNAME} Cored)
 #add_dependencies(${PROJECTNAME} Common)
-set(AllFile ${src})
+#set(AllFile ${src})
 # 对 AllFile 变量里面的所有文件分类(保留资源管理器的目录结构)
 #foreach(fileItem ${AllFile})
 #    message(${fileItem})
@@ -46,16 +40,15 @@ source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${deps})
 add_executable(${PROJECT_NAME} ${Main} ${src} ${inc} ${deps})
 #add_dependencies(${PROJECT_NAME} Shaders)
 
-target_include_directories(${PROJECT_NAME} PUBLIC "D:/ProgramData/imgui-1.89.5")
-target_include_directories(${PROJECT_NAME} PUBLIC "D:/ProgramData/imgui-1.89.5/backends")
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${OPENGL_CORE_DIR})
-target_include_directories(${PROJECT_NAME} PUBLIC ${COMPONENT_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${ENGINE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${IMGUI_INCLUDE_DIR})
+
 
 #target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE assimp::assimp)
-target_link_libraries(${PROJECT_NAME} PRIVATE OpenGLCore)
-#target_link_libraries(${PROJECT_NAME} PRIVATE Common)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenGLEngine)
+target_link_libraries(${PROJECT_NAME} PRIVATE VulkanEngine)
 target_link_libraries(${PROJECT_NAME} PRIVATE Components)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "App")

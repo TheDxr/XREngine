@@ -8,7 +8,7 @@
 #include <rapidjson/stringbuffer.h>
 
 #include "rapidjson/writer.h"
-#include "Mesh.h"
+#include "OpenGL/Mesh.h"
 
 
 void Scene::Load(const std::filesystem::path &Path)

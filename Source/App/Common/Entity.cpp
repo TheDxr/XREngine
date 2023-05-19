@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 #include "Model/Model.h"
-#include "Shader.h"
+#include "OpenGL/Shader.h"
 
 // auto pBaseModel = std::make_shared<Model>("Assets/base.obj");
 

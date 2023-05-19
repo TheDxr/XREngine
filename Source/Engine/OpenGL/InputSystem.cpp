@@ -18,9 +18,9 @@ InputSystem::InputSystem(GLFWwindow *window) : mpWindow(window)
         if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
             glfwSetWindowShouldClose(window, true);
     });
-    //    glfwSetInputMode(mpWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    //    glfwSetCursorPosCallback(mpWindow, mouse_callback);
-    //    glfwSetScrollCallback(mpWindow, scroll_callback);
+    //    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //    glfwSetCursorPosCallback(window, mouse_callback);
+    //    glfwSetScrollCallback(window, scroll_callback);
 }
 void InputSystem::EnableCursor() { glfwSetInputMode(mpWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL); }
 void InputSystem::DisableCursor() { glfwSetInputMode(mpWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED); }

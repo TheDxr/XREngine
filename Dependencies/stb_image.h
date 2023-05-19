@@ -140,14 +140,14 @@ RECENT REVISION HISTORY:
 //    int x,y,n;
 //    unsigned char *data = stbi_load(filename, &x, &y, &n, 0);
 //    // ... process data if not NULL ...
-//    // ... x = width, y = height, n = # 8-bit components per pixel ...
+//    // ... x = Width, y = Height, n = # 8-bit components per pixel ...
 //    // ... replace '0' with '1'..'4' to force that many components per pixel
 //    // ... but 'n' will always be the number that it would have been if you said 0
 //    stbi_image_free(data);
 //
 // Standard parameters:
-//    int *x                 -- outputs image width in pixels
-//    int *y                 -- outputs image height in pixels
+//    int *x                 -- outputs image Width in pixels
+//    int *y                 -- outputs image Height in pixels
 //    int *channels_in_file  -- outputs # of image components in image file
 //    int desired_channels   -- if non-zero, # of image components requested in result
 //
@@ -182,7 +182,7 @@ RECENT REVISION HISTORY:
 //
 // Paletted PNG, BMP, GIF, and PIC images are automatically depalettized.
 //
-// To query the width, height and component count of an image without having to
+// To query the Width, Height and component count of an image without having to
 // decode the full file, you can use the stbi_info family of functions:
 //
 //   int x,y,n,ok;
@@ -359,7 +359,7 @@ RECENT REVISION HISTORY:
 //     want the zlib decoder to be available, #define STBI_SUPPORT_ZLIB
 //
 //  - If you define STBI_MAX_DIMENSIONS, stb_image will reject images greater
-//    than that size (in either width or height) without further processing.
+//    than that size (in either Width or Height) without further processing.
 //    This is to let programs in the wild set an upper bound to prevent
 //    denial-of-service attacks on untrusted data, as one could generate a
 //    valid image of gigantic dimensions and force stb_image to allocate a
@@ -6249,7 +6249,7 @@ static void *stbi__bmp_load(stbi__context *s, int *x, int *y, int *comp, int req
         }
         stbi__skip(s, info.offset - info.extra_read - info.hsz - psize * (info.hsz == 12 ? 3 : 4));
         if(info.bpp == 1)
-            width = (s->img_x + 7) >> 3;
+            Width = (s->img_x + 7) >> 3;
         else if(info.bpp == 4)
             width = (s->img_x + 1) >> 1;
         else if(info.bpp == 8)
@@ -7952,7 +7952,7 @@ static float *stbi__hdr_load(stbi__context *s, int *x, int *y, int *comp, int re
     if(!valid)
         return stbi__errpf("unsupported format", "Unsupported HDR format");
 
-    // Parse width and height
+    // Parse width and Height
     // can't use sscanf() if we're not using stdio!
     token = stbi__hdr_gettoken(s, buffer);
     if(strncmp(token, "-Y ", 3))

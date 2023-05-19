@@ -1,7 +1,7 @@
 #include "Model.h"
-#include "Material.h"
-#include "Texture.h"
+#include "OpenGL/Material.h"
 
+#include "OpenGL/Texture.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>

@@ -1,8 +1,8 @@
 #pragma once
 #include <glm/glm.hpp>
 
-#include "Shader.h"
-#include "Transform.h"
+#include "Components/Transform.h"
+#include "OpenGL/Shader.h"
 
 
 class Entity

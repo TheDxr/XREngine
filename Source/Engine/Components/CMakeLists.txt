@@ -14,6 +14,6 @@ add_library(${PROJECT_NAME} STATIC
         ${src})
 
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${GLM_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${GLM_INCLUDE_DIR})
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Engine")
 

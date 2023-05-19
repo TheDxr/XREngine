@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
-set(PROJECT_NAME "VulkanCore")
+set(PROJECT_NAME "VulkanEngine")
 
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
-find_package(spdlog CONFIG REQUIRED)
 
 
 file(GLOB_RECURSE inc ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
@@ -18,10 +17,10 @@ add_library(${PROJECT_NAME} STATIC
 
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Engine")
-target_include_directories(${PROJECT_NAME} PUBLIC "D:/VulkanSDK/1.3.216.0/Include")
-target_link_directories(${PROJECT_NAME} PUBLIC "D:/VulkanSDK/1.3.216.0/Lib")
+
+target_include_directories(${PROJECT_NAME} PUBLIC "${VULKAN_SDK_DIR}/Include")
+target_include_directories(${PROJECT_NAME} PUBLIC ${SPDLOG_INCLUDE_DIR})
+target_link_directories(${PROJECT_NAME} PUBLIC "${VULKAN_SDK_DIR}/Lib")
 target_link_libraries(${PROJECT_NAME} PUBLIC
                       glfw
-                      vulkan-1
-                      spdlog::spdlog
-                      )
+                      vulkan-1)

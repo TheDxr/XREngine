@@ -2,7 +2,7 @@
 #include "Shader.h"
 
 #include <glm/glm.hpp>
-#include "../../App/Common/Model/Material.h"
+#include "Material.h"
 
 #include <vector>
 
@@ -12,7 +12,6 @@ struct Vertex
     glm::vec3 Normal;
     glm::vec2 TexCoords;
 };
-
 class Mesh
 {
 public:
