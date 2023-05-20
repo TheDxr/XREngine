@@ -139,7 +139,7 @@ Mesh Model::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 
     //    LoadMaterialTextures(material, aiTextureType_SPECULAR, tempMaterial.Specular);
     //    LoadMaterialTextures(material, aiTextureType_HEIGHT, tempMaterial.Normal);
-    //    LoadMaterialTextures(material, aiTextureType_AMBIENT, tempMaterial.Height);
+    //    LoadMaterialTextures(material, aiTextureType_AMBIENT, tempMaterial.GetHeight);
     // return a mesh object created from the extracted mesh data
     return {vertices, indices, tempMaterial};
 }

@@ -1,12 +1,9 @@
 #pragma once
 
-#include "../../../../../../../Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/iostream"
-#include "../../../../../../../Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sstream"
-#include "../../../../../../../Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/stdexcept"
-#include "../../../../../../../Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/string"
+#include <iostream>
+#include <sstream>
 
-
-class Utils
+class Utils final
 {
 public:
     static void print(glm::vec3 vec)
