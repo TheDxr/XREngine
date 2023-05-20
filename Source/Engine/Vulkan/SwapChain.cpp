@@ -18,7 +18,7 @@ SwapChain::SwapChain(Device &deviceRef, VkExtent2D extent) : device{deviceRef}, 
     CreateImageViews();
     CreateRenderPass();
     CreateDepthResources();
-    CreateFramebuffers();
+    CreateFrameBuffers();
     CreateSyncObjects();
 }
 
@@ -37,10 +37,10 @@ SwapChain::~SwapChain()
     for(int i = 0; i < depthImages.size(); i++) {
         vkDestroyImageView(device.GetDevice(), depthImageViews[i], nullptr);
         vkDestroyImage(device.GetDevice(), depthImages[i], nullptr);
-        vkFreeMemory(device.GetDevice(), depthImageMemorys[i], nullptr);
+        vkFreeMemory(device.GetDevice(), depthImageMemories[i], nullptr);
     }
 
-    for(auto framebuffer : swapChainFramebuffers) {
+    for(auto framebuffer : swapChainFrameBuffers) {
         vkDestroyFramebuffer(device.GetDevice(), framebuffer, nullptr);
     }
 
@@ -257,10 +257,10 @@ void SwapChain::CreateRenderPass()
     }
 }
 
-void SwapChain::CreateFramebuffers()
+void SwapChain::CreateFrameBuffers()
 {
-    swapChainFramebuffers.resize(ImageCount());
-    for(size_t i = 0; i < ImageCount(); i++) {
+    swapChainFrameBuffers.resize(GetImageCount());
+    for(size_t i = 0; i < GetImageCount(); i++) {
         std::array<VkImageView, 2> attachments = {swapChainImageViews[i], depthImageViews[i]};
 
         VkExtent2D swapChainExtent              = GetSwapChainExtent();
@@ -273,7 +273,7 @@ void SwapChain::CreateFramebuffers()
         framebufferInfo.height                  = swapChainExtent.height;
         framebufferInfo.layers                  = 1;
 
-        if(vkCreateFramebuffer(device.GetDevice(), &framebufferInfo, nullptr, &swapChainFramebuffers[i]) !=
+        if(vkCreateFramebuffer(device.GetDevice(), &framebufferInfo, nullptr, &swapChainFrameBuffers[i]) !=
            VK_SUCCESS) {
             throw std::runtime_error("failed to create framebuffer!");
         }
@@ -285,9 +285,9 @@ void SwapChain::CreateDepthResources()
     VkFormat depthFormat       = FindDepthFormat();
     VkExtent2D swapChainExtent = GetSwapChainExtent();
 
-    depthImages.resize(ImageCount());
-    depthImageMemorys.resize(ImageCount());
-    depthImageViews.resize(ImageCount());
+    depthImages.resize(GetImageCount());
+    depthImageMemories.resize(GetImageCount());
+    depthImageViews.resize(GetImageCount());
 
     for(int i = 0; i < depthImages.size(); i++) {
         VkImageCreateInfo imageInfo{};
@@ -307,7 +307,7 @@ void SwapChain::CreateDepthResources()
         imageInfo.flags         = 0;
 
         device.CreateImageWithInfo(imageInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, depthImages[i],
-                                   depthImageMemorys[i]);
+                                   depthImageMemories[i]);
 
         VkImageViewCreateInfo viewInfo{};
         viewInfo.sType                           = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
@@ -331,7 +331,7 @@ void SwapChain::CreateSyncObjects()
     imageAvailableSemaphores.resize(MAX_FRAMES_IN_FLIGHT);
     renderFinishedSemaphores.resize(MAX_FRAMES_IN_FLIGHT);
     inFlightFences.resize(MAX_FRAMES_IN_FLIGHT);
-    imagesInFlight.resize(ImageCount(), VK_NULL_HANDLE);
+    imagesInFlight.resize(GetImageCount(), VK_NULL_HANDLE);
 
     VkSemaphoreCreateInfo semaphoreInfo = {};
     semaphoreInfo.sType                 = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;

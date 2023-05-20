@@ -1,5 +1,6 @@
 #include "Application.h"
 
+#include "Pipeline.h"
 #include <array>
 #include <memory>
 #include <stdexcept>
@@ -8,23 +9,14 @@
 namespace Dxr
 {
 
-// FirstApp::FirstApp() {
-
-//}
-// FirstApp::~FirstApp() {
-//    vkDestroyPipelineLayout(dxrDevice.GetDevice(), pipelineLayout, nullptr);
-//}
-// void FirstApp::run() {
-
-//}
-
 void Application::CreateCommandBuffers()
 {
-    commandBuffers.resize(dxrSwapChain.ImageCount());
+    commandBuffers.resize(swapChain.GetImageCount());
 
     VkCommandBufferAllocateInfo allocateInfo{};
     allocateInfo.sType              = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-    allocateInfo.level              = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+    // PRIMARY能直接提交但不能被其他调用
+    allocateInfo.level              = VK_COMMAND_BUFFER_LEVEL_PRIMARY;//（PRIMARY 或者 SECONDARY）
     allocateInfo.commandPool        = device_.GetCommandPool();
     allocateInfo.commandBufferCount = static_cast<uint32_t>(commandBuffers.size());
 
@@ -32,7 +24,7 @@ void Application::CreateCommandBuffers()
         throw std::runtime_error("分配Command Buffers 失败!");
     }
     for(int i = 0; i < commandBuffers.size(); i++) {
-        VkCommandBufferBeginInfo beginInfo;
+        VkCommandBufferBeginInfo beginInfo{};
         beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 
         if(vkBeginCommandBuffer(commandBuffers[i], &beginInfo) != VK_SUCCESS) {
@@ -41,22 +33,21 @@ void Application::CreateCommandBuffers()
 
         VkRenderPassBeginInfo renderPassInfo{};
         renderPassInfo.sType       = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-        renderPassInfo.renderPass  = dxrSwapChain.GetRenderPass();
-        renderPassInfo.framebuffer = dxrSwapChain.GetFrameBuffer(i);
+        renderPassInfo.renderPass  = swapChain.GetRenderPass();
+        renderPassInfo.framebuffer = swapChain.GetFrameBuffer(i);
 
         renderPassInfo.renderArea.offset = {0, 0};
-        renderPassInfo.renderArea.extent = dxrSwapChain.GetSwapChainExtent();
+        renderPassInfo.renderArea.extent = swapChain.GetSwapChainExtent();
 
-        std::array<VkClearValue, 2> clearValues{};
-        clearValues[0].color           = {0.1f, 0.1f, 0.1f, 1.0f};
-        clearValues[1].depthStencil    = {1.0f, 0};
+        std::array<VkClearValue, 2> clearValues{};// 清除颜色和深度缓冲区
+        clearValues[0].color           = {0.1f, 0.1f, 0.2f, 1.0f};// 底色
+        clearValues[1].depthStencil    = {1.0f, 0}; // 深度值缓冲区1代表最远，0代表最近
         renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
         renderPassInfo.pClearValues    = clearValues.data();
 
         vkCmdBeginRenderPass(commandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-
-        dxrPipeline->Bind(commandBuffers[i]);
+        pipeline->Bind(commandBuffers[i]);
         vkCmdDraw(commandBuffers[i], 3, 1, 0, 0);
 
         vkCmdEndRenderPass(commandBuffers[i]);
@@ -65,6 +56,7 @@ void Application::CreateCommandBuffers()
         }
     }
 }
+
 void Application::CreatePipelineLayout()
 {
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
@@ -77,21 +69,36 @@ void Application::CreatePipelineLayout()
         throw std::runtime_error("创建pipeline layout失败!");
     }
 }
+
 void Application::CreatePipeline()
 {
-    auto pipelineConfig           = Pipeline::DefaultPipelineConfigInfo(dxrSwapChain.Width(), dxrSwapChain.Height());
-    pipelineConfig.renderPass     = dxrSwapChain.GetRenderPass();
-    pipelineConfig.pipelineLayout = pipelineLayout;
-    dxrPipeline =
-        std::make_unique<Pipeline>(device_, "D:/SourceCode/CppCode/Vulkan/shader/simple_shader.vert.spv",
-                                   "D:/SourceCode/CppCode/Vulkan/shader/simple_shader.frag.spv", pipelineConfig);
+    auto configInfo = Pipeline::DefaultPipelineConfigInfo(swapChain.GetWidth(), swapChain.GetHeight());
+    configInfo.renderPass     = swapChain.GetRenderPass();
+    configInfo.pipelineLayout = pipelineLayout;
+    pipeline = std::make_unique<Pipeline>(
+        device_, "D:/SourceCode/CppCode/Vulkan/shader/simple_shader.vert.spv",
+        "D:/SourceCode/CppCode/Vulkan/shader/simple_shader.frag.spv", configInfo);
 }
 
 void Application::Run()
 {
     while(!window.ShouldClose()) {
-        // Update();
         glfwPollEvents();
+        Update();
+    }
+}
+void Application::Update()
+{
+    uint32_t imageIndex;
+    auto result = swapChain.AcquireNextImage(&imageIndex);
+    if(result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR)
+    {
+        throw std::runtime_error("Failed to acquire swap chain image!");
+    }
+    result = swapChain.SubmitCommandBuffers(&commandBuffers[imageIndex], &imageIndex);
+    if(result != VK_SUCCESS)
+    {
+        throw std::runtime_error("Failed to present swap chain image!");
     }
 }
 } // namespace Dxr

@@ -27,26 +27,32 @@ std::vector<char> Pipeline::ReadFile(const std::string &filepath)
     file.close();
     return buffer;
 }
+
 Pipeline::Pipeline(Device &device, const std::string &vertFilePath, const std::string &fragFilePath,
-                   const PipelineConfigInfo &configInfo) :
-    dxrDevice(device)
+                   PipelineConfigInfo &configInfo) :
+    device_(device)
 {
     CreateGraphicsPipeline(vertFilePath, fragFilePath, configInfo);
 }
+
 Pipeline::~Pipeline()
 {
-    vkDestroyShaderModule(dxrDevice.GetDevice(), vertShaderModule, nullptr);
-    vkDestroyShaderModule(dxrDevice.GetDevice(), fragShaderModule, nullptr);
-    vkDestroyPipeline(dxrDevice.GetDevice(), graphicsPipeline, nullptr);
+    vkDestroyShaderModule(device_.GetDevice(), vertShaderModule, nullptr);
+    vkDestroyShaderModule(device_.GetDevice(), fragShaderModule, nullptr);
+    vkDestroyPipeline(device_.GetDevice(), graphicsPipeline, nullptr);
 }
 
 void Pipeline::Bind(VkCommandBuffer commandBuffer)
 {
     vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
 }
+
 void Pipeline::CreateGraphicsPipeline(const std::string &vertFilePath, const std::string &fragFilePath,
-                                      const PipelineConfigInfo &configInfo)
+                                      PipelineConfigInfo &configInfo)
 {
+    // //TODO: info生命周期问题
+    // auto test_val_1 = &configInfo.colorBlendAttachment;
+    // configInfo.colorBlendInfo.pAttachments = test_val_1;
 
     assert(configInfo.pipelineLayout != VK_NULL_HANDLE && "无法创建pipeline : 无pipelineLayout");
     assert(configInfo.renderPass != VK_NULL_HANDLE && "无法创建pipeline : 无renderPass");
@@ -65,9 +71,9 @@ void Pipeline::CreateGraphicsPipeline(const std::string &vertFilePath, const std
     shaderStages[0].pNext               = nullptr;
     shaderStages[0].pSpecializationInfo = nullptr;
 
-    shaderStages[1].stage               = VK_SHADER_STAGE_FRAGMENT_BIT;
     shaderStages[1].sType               = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
-    shaderStages[1].module              = vertShaderModule;
+    shaderStages[1].stage               = VK_SHADER_STAGE_FRAGMENT_BIT;
+    shaderStages[1].module              = fragShaderModule;
     shaderStages[1].pName               = "main";
     shaderStages[1].flags               = 0;
     shaderStages[1].pNext               = nullptr;
@@ -107,11 +113,12 @@ void Pipeline::CreateGraphicsPipeline(const std::string &vertFilePath, const std
     pipelineInfo.basePipelineIndex  = -1;
     pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
-    if(vkCreateGraphicsPipelines(dxrDevice.GetDevice(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) !=
-       VK_SUCCESS) {
+    if(vkCreateGraphicsPipelines(device_.GetDevice(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) !=
+        VK_SUCCESS) {
         throw std::runtime_error("failed to create graphics pipeline");
     }
 }
+
 void Pipeline::CreateShaderModule(const std::vector<char> &code, VkShaderModule *shaderModule)
 {
     VkShaderModuleCreateInfo createInfo{};
@@ -119,18 +126,20 @@ void Pipeline::CreateShaderModule(const std::vector<char> &code, VkShaderModule 
     createInfo.codeSize = code.size();
     createInfo.pCode    = reinterpret_cast<const uint32_t *>(code.data());
 
-    if(vkCreateShaderModule(dxrDevice.GetDevice(), &createInfo, nullptr, shaderModule) != VK_SUCCESS) {
+    if(vkCreateShaderModule(device_.GetDevice(), &createInfo, nullptr, shaderModule) != VK_SUCCESS) {
         throw std::runtime_error("failed to create shader module");
     }
 }
+
 PipelineConfigInfo Pipeline::DefaultPipelineConfigInfo(uint32_t width, uint32_t height)
 {
     PipelineConfigInfo configInfo{};
 
     configInfo.inputAssemblyInfo.sType                  = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
-    configInfo.inputAssemblyInfo.topology               = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+    configInfo.inputAssemblyInfo.topology               = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST; // 每三个顶点一个三角形（不共用顶点）
     configInfo.inputAssemblyInfo.primitiveRestartEnable = VK_FALSE;
 
+    // 配置视口
     configInfo.viewport.x        = 0.0f;
     configInfo.viewport.y        = 0.0f;
     configInfo.viewport.width    = static_cast<float>(width);
@@ -141,19 +150,20 @@ PipelineConfigInfo Pipeline::DefaultPipelineConfigInfo(uint32_t width, uint32_t 
     configInfo.scissor.offset = {0, 0};
     configInfo.scissor.extent = {width, height};
 
-
+    // 配置光栅化
     configInfo.rasterizationInfo.sType                   = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
-    configInfo.rasterizationInfo.depthClampEnable        = VK_FALSE;
-    configInfo.rasterizationInfo.rasterizerDiscardEnable = VK_FALSE;
+    configInfo.rasterizationInfo.depthClampEnable        = VK_FALSE; // 对深度值使用clamp函数
+    configInfo.rasterizationInfo.rasterizerDiscardEnable = VK_FALSE; // 光栅化之前丢弃所有图元
     configInfo.rasterizationInfo.polygonMode             = VK_POLYGON_MODE_FILL;
     configInfo.rasterizationInfo.lineWidth               = 1.0f;
-    configInfo.rasterizationInfo.cullMode                = VK_CULL_MODE_NONE;
-    configInfo.rasterizationInfo.frontFace               = VK_FRONT_FACE_CLOCKWISE;
+    configInfo.rasterizationInfo.cullMode                = VK_CULL_MODE_NONE;       // 背面剔除
+    configInfo.rasterizationInfo.frontFace               = VK_FRONT_FACE_CLOCKWISE; // 顺时针为正面
     configInfo.rasterizationInfo.depthBiasEnable         = VK_FALSE;
     configInfo.rasterizationInfo.depthBiasConstantFactor = 0.0f; // Optional
     configInfo.rasterizationInfo.depthBiasClamp          = 0.0f; // Optional
     configInfo.rasterizationInfo.depthBiasSlopeFactor    = 0.0f; // Optional
 
+    // 配置MSAA抗锯齿
     configInfo.multisampleInfo.sType                 = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
     configInfo.multisampleInfo.sampleShadingEnable   = VK_FALSE;
     configInfo.multisampleInfo.rasterizationSamples  = VK_SAMPLE_COUNT_1_BIT;
@@ -172,6 +182,7 @@ PipelineConfigInfo Pipeline::DefaultPipelineConfigInfo(uint32_t width, uint32_t 
     configInfo.colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO; // Optional
     configInfo.colorBlendAttachment.alphaBlendOp        = VK_BLEND_OP_ADD;      // Optional
 
+    // alpha混合
     configInfo.colorBlendInfo.sType             = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
     configInfo.colorBlendInfo.logicOpEnable     = VK_FALSE;
     configInfo.colorBlendInfo.logicOp           = VK_LOGIC_OP_COPY; // Optional
@@ -182,6 +193,7 @@ PipelineConfigInfo Pipeline::DefaultPipelineConfigInfo(uint32_t width, uint32_t 
     configInfo.colorBlendInfo.blendConstants[2] = 0.0f; // Optional
     configInfo.colorBlendInfo.blendConstants[3] = 0.0f; // Optional
 
+    // 深度测试
     configInfo.depthStencilInfo.sType                 = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     configInfo.depthStencilInfo.depthTestEnable       = VK_TRUE;
     configInfo.depthStencilInfo.depthWriteEnable      = VK_TRUE;

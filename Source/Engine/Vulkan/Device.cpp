@@ -16,7 +16,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityF
                                                     const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
                                                     void *pUserData)
 {
-    spdlog::error("validation layer: {}", pCallbackData->pMessage);
+    spdlog::error("validation layer: \n{}", pCallbackData->pMessage);
     return VK_FALSE;
 }
 
@@ -291,7 +291,7 @@ void Device::HasGflwRequiredInstanceExtensions()
     std::string availableExtensionsStr;
     for(const auto &extension : extensions) {
         // std::cout << "available: " << extension.extensionName << std::endl;
-        availableExtensionsStr += extension.extensionName ;
+        availableExtensionsStr += extension.extensionName;
         availableExtensionsStr += "  ";
         available.insert(extension.extensionName);
     }

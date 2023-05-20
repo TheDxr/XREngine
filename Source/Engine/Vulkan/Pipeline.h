@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "Device.h"
 
 #include <stdint.h>
@@ -27,26 +29,29 @@ struct PipelineConfigInfo
     VkRenderPass renderPass         = nullptr;
     uint32_t subpass                = 0;
 };
+
 class Pipeline
 {
 public:
     Pipeline(Device &device, const std::string &vertFilePath, const std::string &fragFilePath,
-             const PipelineConfigInfo &configInfo);
+             PipelineConfigInfo &configInfo);
     ~Pipeline();
-    Pipeline(const Pipeline &)       = delete;
-    void operator=(const Pipeline &) = delete;
-
+    Pipeline(const Pipeline &)        = delete;
+    void operator=(const Pipeline &)  = delete;
+    Pipeline(const Pipeline &&)       = delete;
+    void operator=(const Pipeline &&) = delete;
     void Bind(VkCommandBuffer commandBuffer);
     static PipelineConfigInfo DefaultPipelineConfigInfo(uint32_t width, uint32_t height);
 
 private:
     static std::vector<char> ReadFile(const std::string &filepath);
     void CreateGraphicsPipeline(const std::string &vertFilePath, const std::string &fragFilePath,
-                                const PipelineConfigInfo &configInfo);
+                                PipelineConfigInfo &configInfo);
 
     void CreateShaderModule(const std::vector<char> &code, VkShaderModule *shaderModule);
 
-    Device &dxrDevice;
+    //TODO : unsafe
+    Device &device_;
     VkPipeline graphicsPipeline;
     VkShaderModule vertShaderModule;
     VkShaderModule fragShaderModule;

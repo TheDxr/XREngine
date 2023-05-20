@@ -23,16 +23,16 @@ public:
     SwapChain(const SwapChain &)      = delete;
     void operator=(const SwapChain &) = delete;
 
-    VkFramebuffer GetFrameBuffer(int index) { return swapChainFramebuffers[index]; }
+    VkFramebuffer GetFrameBuffer(int index) { return swapChainFrameBuffers[index]; }
     VkRenderPass GetRenderPass() { return renderPass; }
     VkImageView GetImageView(int index) { return swapChainImageViews[index]; }
-    size_t ImageCount() { return swapChainImages.size(); }
+    // 2或者3，取决于支持双重缓冲还是三重缓冲
+    size_t GetImageCount() { return swapChainImages.size(); }
     VkFormat GetSwapChainImageFormat() { return swapChainImageFormat; }
     VkExtent2D GetSwapChainExtent() { return swapChainExtent; }
-    uint32_t Width() { return swapChainExtent.width; }
-    uint32_t Height() { return swapChainExtent.height; }
-
-    float ExtentAspectRatio()
+    uint32_t GetWidth() { return swapChainExtent.width; }
+    uint32_t GetHeight() { return swapChainExtent.height; }
+    float GetExtentAspectRatio()
     {
         return static_cast<float>(swapChainExtent.width) / static_cast<float>(swapChainExtent.height);
     }
@@ -46,7 +46,7 @@ private:
     void CreateImageViews();
     void CreateDepthResources();
     void CreateRenderPass();
-    void CreateFramebuffers();
+    void CreateFrameBuffers();
     void CreateSyncObjects();
 
     // Helper functions
@@ -57,11 +57,11 @@ private:
     VkFormat swapChainImageFormat;
     VkExtent2D swapChainExtent;
 
-    std::vector<VkFramebuffer> swapChainFramebuffers;
+    std::vector<VkFramebuffer> swapChainFrameBuffers;
     VkRenderPass renderPass;
 
     std::vector<VkImage> depthImages;
-    std::vector<VkDeviceMemory> depthImageMemorys;
+    std::vector<VkDeviceMemory> depthImageMemories;
     std::vector<VkImageView> depthImageViews;
     std::vector<VkImage> swapChainImages;
     std::vector<VkImageView> swapChainImageViews;
