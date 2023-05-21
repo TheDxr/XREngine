@@ -2,10 +2,15 @@
 Language: Cpp
 BasedOnStyle: LLVM
 AccessModifierOffset: -4
+AlignAfterOpenBracket: AlwaysBreak
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: false
 AlignOperands: false
 AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
+# 列数限制
+ColumnLimit:  88
 BraceWrapping: 
   AfterCaseLabel: false
   AfterClass: true
@@ -24,8 +29,7 @@ BraceWrapping:
   SplitEmptyRecord: false
   SplitEmptyNamespace: false
 BreakBeforeBraces: Custom
-BreakConstructorInitializers: AfterColon
-ColumnLimit: 120
+# BreakBeforeTernaryOperators: false
 IncludeCategories: 
   - Regex: '^<.*'
     Priority: 1
@@ -39,7 +43,6 @@ IndentWrappedFunctionNames: true
 MacroBlockBegin: ''
 MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 2
-NamespaceIndentation: None
 SpaceBeforeParens: Never
 SpacesInAngles: false
 TabWidth: 4
