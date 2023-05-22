@@ -14,17 +14,20 @@ namespace Dxr
 
 struct PipelineConfigInfo
 {
-    VkViewport viewport;
-    VkRect2D scissor;
-    // VkPipelineViewportStateCreateInfo viewportInfo;
-    VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo;
-    VkPipelineRasterizationStateCreateInfo rasterizationInfo;
-    VkPipelineMultisampleStateCreateInfo multisampleInfo;
-    VkPipelineColorBlendAttachmentState colorBlendAttachment;
-    VkPipelineColorBlendStateCreateInfo colorBlendInfo;
-    VkPipelineDepthStencilStateCreateInfo depthStencilInfo;
-    // std::vector<VkDynamicState> dynamicStateEnables;
-    // VkPipelineDynamicStateCreateInfo dynamicStateInfo;
+    PipelineConfigInfo()                                      = default;
+    ~PipelineConfigInfo()                                     = default;
+    PipelineConfigInfo(const PipelineConfigInfo &)            = delete;
+    PipelineConfigInfo &operator=(const PipelineConfigInfo &) = delete;
+
+    VkPipelineViewportStateCreateInfo viewportInfo{};
+    VkPipelineInputAssemblyStateCreateInfo inputAssemblyInfo{}; // 输入组装
+    VkPipelineRasterizationStateCreateInfo rasterizationInfo{}; // 光栅化
+    VkPipelineMultisampleStateCreateInfo multisampleInfo{};     // 多重采样
+    VkPipelineColorBlendAttachmentState colorBlendAttachment{}; // 颜色混合附件
+    VkPipelineColorBlendStateCreateInfo colorBlendInfo{};       // 颜色混合
+    VkPipelineDepthStencilStateCreateInfo depthStencilInfo{};   // 深度测试
+    std::vector<VkDynamicState> dynamicStateEnables;
+    VkPipelineDynamicStateCreateInfo dynamicStateInfo{};
     VkPipelineLayout pipelineLayout = nullptr;
     VkRenderPass renderPass         = nullptr;
     uint32_t subpass                = 0;
@@ -41,7 +44,7 @@ public:
     Pipeline(const Pipeline &&)       = delete;
     void operator=(const Pipeline &&) = delete;
     void Bind(VkCommandBuffer commandBuffer);
-    static PipelineConfigInfo DefaultPipelineConfigInfo(uint32_t width, uint32_t height);
+    static void DefaultPipelineConfigInfo(PipelineConfigInfo &configInfo);
 
 private:
     static std::vector<char> ReadFile(const std::string &filepath);
@@ -50,7 +53,7 @@ private:
 
     void CreateShaderModule(const std::vector<char> &code, VkShaderModule *shaderModule);
 
-    //TODO : unsafe
+    // TODO : unsafe
     Device &device_;
     VkPipeline graphicsPipeline;
     VkShaderModule vertShaderModule;

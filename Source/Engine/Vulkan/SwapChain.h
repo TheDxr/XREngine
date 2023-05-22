@@ -6,6 +6,7 @@
 #include <vulkan/vulkan.h>
 
 // std lib headers
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -17,7 +18,9 @@ class SwapChain
 public:
     static constexpr int MAX_FRAMES_IN_FLIGHT = 2;
 
-    SwapChain(Device &deviceRef, VkExtent2D windowExtent);
+    SwapChain(Device &deviceRef, VkExtent2D extent);
+    SwapChain(
+        Device &deviceRef, VkExtent2D extent, std::shared_ptr<SwapChain> previous);
     ~SwapChain();
 
     SwapChain(const SwapChain &)      = delete;
@@ -34,7 +37,8 @@ public:
     uint32_t GetHeight() { return swapChainExtent.height; }
     float GetExtentAspectRatio()
     {
-        return static_cast<float>(swapChainExtent.width) / static_cast<float>(swapChainExtent.height);
+        return static_cast<float>(swapChainExtent.width) /
+            static_cast<float>(swapChainExtent.height);
     }
     VkFormat FindDepthFormat();
 
@@ -42,6 +46,7 @@ public:
     VkResult SubmitCommandBuffers(const VkCommandBuffer *buffers, uint32_t *imageIndex);
 
 private:
+    void Init();
     void CreateSwapChain();
     void CreateImageViews();
     void CreateDepthResources();
@@ -50,8 +55,10 @@ private:
     void CreateSyncObjects();
 
     // Helper functions
-    VkSurfaceFormatKHR ChooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR> &availableFormats);
-    VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR> &availablePresentModes);
+    VkSurfaceFormatKHR ChooseSwapSurfaceFormat(
+        const std::vector<VkSurfaceFormatKHR> &availableFormats);
+    VkPresentModeKHR ChooseSwapPresentMode(
+        const std::vector<VkPresentModeKHR> &availablePresentModes);
     VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR &capabilities);
 
     VkFormat swapChainImageFormat;
@@ -68,8 +75,8 @@ private:
 
     Device &device;
     VkExtent2D windowExtent;
-
     VkSwapchainKHR swapChain;
+    std::shared_ptr<SwapChain> oldSwapChain;
 
     std::vector<VkSemaphore> imageAvailableSemaphores;
     std::vector<VkSemaphore> renderFinishedSemaphores;

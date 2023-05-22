@@ -18,11 +18,14 @@ public:
     bool ShouldClose() { return glfwWindowShouldClose(window); }
     VkExtent2D GetExtent() { return {static_cast<uint32_t>(width), static_cast<uint32_t>(height)}; }
     void CreateWindowSurface(VkInstance instance, VkSurfaceKHR *surface);
-
+    bool Resized() { return framebufferResized; }
+    void ResetWindowResizedFlag() { framebufferResized = false; }
 private:
+    static void framebufferResizeCallback(GLFWwindow *window, int width, int height);
     void Init();
-    const int width;
-    const int height;
+    int width;
+    int height;
+    bool framebufferResized = false;
     std::string windowName;
     GLFWwindow *window;
 };
