@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 set(PROJECT_NAME Application)
 
-
 find_package(assimp CONFIG REQUIRED)
 find_package(rapidjson CONFIG REQUIRED)
 
@@ -35,21 +34,26 @@ file(GLOB_RECURSE src ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 #endforeach ()
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${inc})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${src})
-source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${deps})
+#source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${deps})
 
 add_executable(${PROJECT_NAME} ${Main} ${src} ${inc} ${deps})
 #add_dependencies(${PROJECT_NAME} Shaders)
 
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${ENGINE_DIR})
-target_include_directories(${PROJECT_NAME} PUBLIC ${IMGUI_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/ECS)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Engine)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Resources)
+target_include_directories(${PROJECT_NAME} PRIVATE ${IMGUI_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${DEP_DIR}/spdlog/include)
 
 
 #target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE assimp::assimp)
 target_link_libraries(${PROJECT_NAME} PRIVATE OpenGLEngine)
 target_link_libraries(${PROJECT_NAME} PRIVATE VulkanEngine)
-target_link_libraries(${PROJECT_NAME} PRIVATE Components)
+target_link_libraries(${PROJECT_NAME} PRIVATE Resources)
+target_link_libraries(${PROJECT_NAME} PRIVATE ECS)
+
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "App")
 

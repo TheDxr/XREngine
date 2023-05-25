@@ -4,11 +4,11 @@
 #include <stdexcept>
 #include <vulkan/vulkan_core.h>
 
-namespace Dxr
+namespace dxr
 {
-Window::Window(int w, int h, std::string name) : width{w}, height{h}, windowName{name} { Init(); }
+Window::Window(int w, int h, std::string name) : width{w}, height{h}, windowName{name} { init(); }
 
-void Window::Init()
+void Window::init()
 {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -18,7 +18,7 @@ void Window::Init()
     glfwSetWindowUserPointer(window, this);
     glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
 }
-void Window::CreateWindowSurface(VkInstance instance, VkSurfaceKHR *surface)
+void Window::createWindowSurface(VkInstance instance, VkSurfaceKHR *surface)
 {
     if(glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
         throw std::runtime_error("failed to create window GetSurface");

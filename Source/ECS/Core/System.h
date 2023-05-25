@@ -10,6 +10,6 @@ class System
 {
 public:
     // 包含所有满足component要求的的实体
-    std::set<Entity> Entities;
+    std::set<Entity> entities;
 };
 }

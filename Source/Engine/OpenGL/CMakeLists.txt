@@ -19,8 +19,15 @@ add_library(${PROJECT_NAME} STATIC
             ${src})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Engine")
+
 target_include_directories(${PROJECT_NAME} PRIVATE ${SPDLOG_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Engine/OpenGL)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Resources)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/ECS)
+
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-                      glfw
-                      glad::glad)
+                        ECS
+                        Resources
+                        glfw
+                        glad::glad)

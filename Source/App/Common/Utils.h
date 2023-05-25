@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <glm/glm.hpp>
 
 class Utils final
 {
@@ -34,6 +35,55 @@ public:
         ss << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
         return ss.str();
     }
+    class TestClass
+    {
+    public:
+        TestClass(int _id) : id(_id) , Val(_id)
+        {
+            std::cout << "Init TestClass() ID: " << id << std::endl;
+        }
+        TestClass(const TestClass & t)
+        {
+            this->id = t.id;
+            this->Val = t.Val;
+            std::cout << "Cpoied TestClass ID: " << t.id << std::endl;
+        }
+        TestClass(TestClass && t)
+        {
+            this->id = t.id;
+            this->Val = t.Val;
+            std::cout << "Moved TestClass ID: " << t.id << std::endl;
+            t.id = -1;
+            t.Val = -1;
+        }
+        TestClass &operator=(const TestClass & t)
+        {
+            this->id = t.id;
+            this->Val = t.Val;
+            std::cout << "Copied TestClass by operator= ID: " << t.id << std::endl;
+            return *this;
+        }
+        TestClass &operator=(TestClass && t)
+        {
+            this->id = t.id;
+            this->Val = t.Val;
+            std::cout << "Moved TestClass operator= ID: " << t.id << std::endl;
+            t.id = -1;
+            t.Val = -1;
+            return *this;
+        }
+        ~TestClass()
+        {
+            std::cout << "Destructed TestClass ID: " << id << std::endl;
+        }
+        void print()
+        {
+            std::cout << "TestClass::print::ID : " << id << std::endl;
+        }
+        int Val;
+    private:
+        int id;
+    };
     // inline std::string GbkToUtf8(const char *src_str)
 // {
 //     int len       = MultiByteToWideChar(CP_ACP, 0, src_str, -1, NULL, 0);

@@ -5,7 +5,7 @@
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include <glm/glm.hpp>
 #include <vector>
-namespace Dxr
+namespace dxr
 {
 
 class Mesh
@@ -18,10 +18,10 @@ public:
     };
     Mesh(Device &device, const std::vector<Vertex> &vertices);
     ~Mesh();
-    void Bind(VkCommandBuffer commandBuffer);
-    void Draw(VkCommandBuffer commandBuffer);
+    void bind(VkCommandBuffer commandBuffer);
+    void draw(VkCommandBuffer commandBuffer);
 private:
-    void CreateVertexBuffer(const std::vector<Vertex> &vertices);
+    void createVertexBuffer(const std::vector<Vertex> &vertices);
     Device &device_;
     VkBuffer vertexBuffer;
     //VkBuffer indexBuffer;

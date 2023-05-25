@@ -12,15 +12,19 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${inc})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${src})
 
 add_library(${PROJECT_NAME} STATIC
-            ${inc}
-            ${src})
+        ${inc}
+        ${src})
 
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Engine")
 
-target_include_directories(${PROJECT_NAME} PUBLIC "${VULKAN_SDK_DIR}/Include")
-target_include_directories(${PROJECT_NAME} PUBLIC ${SPDLOG_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${VULKAN_SDK_DIR}/Include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SPDLOG_INCLUDE_DIR})
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Resources)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Engine/Vulkan)
+
 target_link_directories(${PROJECT_NAME} PUBLIC "${VULKAN_SDK_DIR}/Lib")
-target_link_libraries(${PROJECT_NAME} PUBLIC
-                      glfw
-                      vulkan-1)
+target_link_libraries(${PROJECT_NAME} PUBLIC vulkan-1)
+target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
+target_link_libraries(${PROJECT_NAME} PUBLIC Resources)

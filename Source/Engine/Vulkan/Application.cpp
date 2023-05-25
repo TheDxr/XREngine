@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include "Pipeline.h"
 
-namespace Dxr
+namespace dxr
 {
 
 struct SimplePushConstantData
@@ -21,29 +21,29 @@ Application::Application(int width, int height, int posX, int posY, std::string 
     : window(width, height, "Hello Vulkan!")
 {
     // auto console = spdlog::stdout_color_mt("console");
-    LoadModels();
-    CreatePipelineLayout();
-    RecreateSwapChain();
-    CreateCommandBuffers();
+    loadModels();
+    createPipelineLayout();
+    recreateSwapChain();
+    createCommandBuffers();
 }
-void Application::CreateCommandBuffers()
+void Application::createCommandBuffers()
 {
-    commandBuffers.resize(swapChain->GetImageCount());
+    commandBuffers_.resize(swapChain_->getImageCount());
 
     VkCommandBufferAllocateInfo allocateInfo{};
     allocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
     // PRIMARY能直接提交但不能被其他调用
     allocateInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY; // （PRIMARY 或者 SECONDARY）
-    allocateInfo.commandPool        = device_.GetCommandPool();
-    allocateInfo.commandBufferCount = static_cast<uint32_t>(commandBuffers.size());
+    allocateInfo.commandPool        = device_.getCommandPool();
+    allocateInfo.commandBufferCount = static_cast<uint32_t>(commandBuffers_.size());
 
     if(vkAllocateCommandBuffers(
-           device_.GetDevice(), &allocateInfo, commandBuffers.data()) != VK_SUCCESS) {
+           device_.getDevice(), &allocateInfo, commandBuffers_.data()) != VK_SUCCESS) {
         throw std::runtime_error("分配Command Buffers 失败!");
     }
 }
 
-void Application::CreatePipelineLayout()
+void Application::createPipelineLayout()
 {
     VkPushConstantRange pushConstantRange{};
     pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
@@ -57,98 +57,98 @@ void Application::CreatePipelineLayout()
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges    = &pushConstantRange;
     if(vkCreatePipelineLayout(
-           device_.GetDevice(), &pipelineLayoutInfo, nullptr, &pipelineLayout) !=
+           device_.getDevice(), &pipelineLayoutInfo, nullptr, &pipelineLayout_) !=
        VK_SUCCESS) {
         throw std::runtime_error("创建pipeline layout失败!");
     }
 }
 
-void Application::CreatePipeline()
+void Application::createPipeline()
 {
     PipelineConfigInfo configInfo{};
-    Pipeline::DefaultPipelineConfigInfo(configInfo);
+    Pipeline::defaultPipelineConfigInfo(configInfo);
 
-    configInfo.renderPass     = swapChain->GetRenderPass();
-    configInfo.pipelineLayout = pipelineLayout;
-    pipeline                  = std::make_unique<Pipeline>(
+    configInfo.renderPass     = swapChain_->getRenderPass();
+    configInfo.pipelineLayout = pipelineLayout_;
+    pipeline_                 = std::make_unique<Pipeline>(
         device_, "Shaders/vulkan.vert.spv", "Shaders/vulkan.frag.spv", configInfo);
 }
 
-void Application::Run()
+void Application::run()
 {
-    while(!window.ShouldClose()) {
+    while(!window.shouldClose()) {
         glfwPollEvents();
-        Update();
+        update();
     }
 }
-void Application::Update()
+void Application::update()
 {
     uint32_t imageIndex;
-    auto result = swapChain->AcquireNextImage(&imageIndex);
+    auto result = swapChain_->acquireNextImage(&imageIndex);
     if(result == VK_ERROR_OUT_OF_DATE_KHR) {
-        RecreateSwapChain();
+        recreateSwapChain();
         return;
     }
     if(result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
         throw std::runtime_error("Failed to acquire swap chain image!");
     }
 
-    RecordCommandBuffer(imageIndex);
-    result = swapChain->SubmitCommandBuffers(&commandBuffers[imageIndex], &imageIndex);
+    recordCommandBuffer(imageIndex);
+    result = swapChain_->submitCommandBuffers(&commandBuffers_[imageIndex], &imageIndex);
     if(result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR ||
-       window.Resized()) {
-        window.ResetWindowResizedFlag();
-        RecreateSwapChain();
+       window.resized()) {
+        window.resetWindowResizedFlag();
+        recreateSwapChain();
         return;
     }
     if(result != VK_SUCCESS) {
         throw std::runtime_error("Failed to present swap chain image!");
     }
 }
-void Application::LoadModels()
+void Application::loadModels()
 {
     std::vector<Mesh::Vertex> vertices{
         {{0.0f, -0.5f}}, {{0.5f, 0.5f}}, {{-0.5f, 0.5f}}};
 
     mesh = std::make_unique<Mesh>(device_, vertices);
 }
-void Application::RecreateSwapChain()
+void Application::recreateSwapChain()
 {
-    auto extent = window.GetExtent();
+    auto extent = window.getExtent();
     while(extent.width == 0 || extent.height == 0) {
-        extent = window.GetExtent();
+        extent = window.getExtent();
         glfwWaitEvents();
     }
-    vkDeviceWaitIdle(device_.GetDevice());
+    vkDeviceWaitIdle(device_.getDevice());
 
-    if(swapChain == nullptr) {
-        swapChain = std::make_unique<SwapChain>(device_, extent);
+    if(swapChain_ == nullptr) {
+        swapChain_ = std::make_unique<SwapChain>(device_, extent);
     }
     else {
-        swapChain = std::make_unique<SwapChain>(device_, extent, std::move(swapChain));
-        if(swapChain->GetImageCount() != commandBuffers.size()) {
-            FreeCommandBuffers();
-            CreateCommandBuffers();
+        swapChain_ = std::make_unique<SwapChain>(device_, extent, std::move(swapChain_));
+        if(swapChain_->getImageCount() != commandBuffers_.size()) {
+            freeCommandBuffers();
+            createCommandBuffers();
         }
     }
-    CreatePipeline();
+    createPipeline();
 }
-void Application::RecordCommandBuffer(int imageIndex)
+void Application::recordCommandBuffer(int imageIndex)
 {
     VkCommandBufferBeginInfo beginInfo{};
     beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 
-    if(vkBeginCommandBuffer(commandBuffers[imageIndex], &beginInfo) != VK_SUCCESS) {
+    if(vkBeginCommandBuffer(commandBuffers_[imageIndex], &beginInfo) != VK_SUCCESS) {
         throw std::runtime_error("记录Command Buffer失败!");
     }
 
     VkRenderPassBeginInfo renderPassInfo{};
     renderPassInfo.sType       = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-    renderPassInfo.renderPass  = swapChain->GetRenderPass();
-    renderPassInfo.framebuffer = swapChain->GetFrameBuffer(imageIndex);
+    renderPassInfo.renderPass  = swapChain_->getRenderPass();
+    renderPassInfo.framebuffer = swapChain_->getFrameBuffer(imageIndex);
 
     renderPassInfo.renderArea.offset = {0, 0};
-    renderPassInfo.renderArea.extent = swapChain->GetSwapChainExtent();
+    renderPassInfo.renderArea.extent = swapChain_->getSwapChainExtent();
 
     std::array<VkClearValue, 2> clearValues{};       // 清除颜色和深度缓冲区
     clearValues[0].color = {0.1f, 0.1f, 0.2f, 1.0f}; // 底色
@@ -156,51 +156,50 @@ void Application::RecordCommandBuffer(int imageIndex)
     renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
     renderPassInfo.pClearValues    = clearValues.data();
 
-    vkCmdBeginRenderPass(
-        commandBuffers[imageIndex], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
+    vkCmdBeginRenderPass(commandBuffers_[imageIndex], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
     VkViewport viewport{};
     viewport.x        = 0.0f;
     viewport.y        = 0.0f;
-    viewport.width    = static_cast<float>(swapChain->GetSwapChainExtent().width);
-    viewport.height   = static_cast<float>(swapChain->GetSwapChainExtent().height);
+    viewport.width    = static_cast<float>(swapChain_->getSwapChainExtent().width);
+    viewport.height   = static_cast<float>(swapChain_->getSwapChainExtent().height);
     viewport.minDepth = 0.0f;
     viewport.maxDepth = 1.0f;
-    VkRect2D scissor{{0, 0}, swapChain->GetSwapChainExtent()};
-    vkCmdSetViewport(commandBuffers[imageIndex], 0, 1, &viewport);
-    vkCmdSetScissor(commandBuffers[imageIndex], 0, 1, &scissor);
+    VkRect2D scissor{{0, 0}, swapChain_->getSwapChainExtent()};
+    vkCmdSetViewport(commandBuffers_[imageIndex], 0, 1, &viewport);
+    vkCmdSetScissor(commandBuffers_[imageIndex], 0, 1, &scissor);
 
 
-    pipeline->Bind(commandBuffers[imageIndex]);
-    mesh->Bind(commandBuffers[imageIndex]);
+    pipeline_->bind(commandBuffers_[imageIndex]);
+    mesh->bind(commandBuffers_[imageIndex]);
 
     for(int j = 0 ;j < 4;j++) {
         SimplePushConstantData push{};
         push.offset = {0.5f * j, 0.5f * j};
 
         vkCmdPushConstants(
-            commandBuffers[imageIndex],
-            pipelineLayout,
+            commandBuffers_[imageIndex],
+            pipelineLayout_,
             VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
             0,
             sizeof(SimplePushConstantData),
             &push);
-        mesh->Draw(commandBuffers[imageIndex]);
+        mesh->draw(commandBuffers_[imageIndex]);
     }
 
-    vkCmdEndRenderPass(commandBuffers[imageIndex]);
-    if(vkEndCommandBuffer(commandBuffers[imageIndex]) != VK_SUCCESS) {
+    vkCmdEndRenderPass(commandBuffers_[imageIndex]);
+    if(vkEndCommandBuffer(commandBuffers_[imageIndex]) != VK_SUCCESS) {
         throw std::runtime_error("无法记录command Buffers");
     }
 }
-void Application::FreeCommandBuffers()
+void Application::freeCommandBuffers()
 {
     vkFreeCommandBuffers(
-        device_.GetDevice(),
-        device_.GetCommandPool(),
-        static_cast<uint32_t>(commandBuffers.size()),
-        commandBuffers.data());
-    commandBuffers.clear();
+        device_.getDevice(),
+        device_.getCommandPool(),
+        static_cast<uint32_t>(commandBuffers_.size()),
+        commandBuffers_.data());
+    commandBuffers_.clear();
 }
 
 } // namespace Dxr

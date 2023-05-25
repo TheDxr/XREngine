@@ -15,7 +15,7 @@ EmbeddedUI::EmbeddedUI(GLFWwindow *window) : mWindow(window) {
 
 }
 
-void EmbeddedUI::Init() {
+void EmbeddedUI::init() {
 #pragma region 设置gui
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
@@ -47,7 +47,7 @@ void EmbeddedUI::RenderLoadPanel()
     ImGui::SameLine();
 }
 
-void EmbeddedUI::Render() {
+void EmbeddedUI::render() {
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();

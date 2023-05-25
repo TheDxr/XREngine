@@ -1,78 +1,36 @@
 #include "Application.h"
 
+#include <glad/glad.h>
 #include <iostream>
 #include <stdexcept>
-#include <glad/glad.h>
-
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
+#include <glm/ext/matrix_transform.hpp>
+#include <memory>
 #include <spdlog/spdlog.h>
 
+#include "Timer.h"
+// #include "Common/Model/Model.h"
+// #include "UI/EmbeddedUI.h"
+#include "glError.h"
 
-Application::Application()
-    : mState(stateReady), mWidth(512), mHeight(512), mTitle("Application")
+namespace dxr::gl
 {
-    spdlog::info("GLFW initialized");
-    // initialize the GLFW library
-    if(!glfwInit()) {
-        throw std::runtime_error("Couldn't init GLFW");
-    }
+using namespace std;
+using namespace glm;
 
-    // setting the opengl version
-    int major = 3;
-    int minor = 2;
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    // create the window
-    mpWindow = glfwCreateWindow(mWidth, mHeight, mTitle.c_str(), NULL, NULL);
-    if(!mpWindow) {
-        glfwTerminate();
-        throw std::runtime_error("Couldn't create a window");
-    }
-    
-    glfwMakeContextCurrent(mpWindow);
-    if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        throw std::runtime_error(std::string("Could initialize GLAD"));
-    }
-
-    // get version info
-    const GLubyte* renderer = glGetString(GL_RENDERER);
-    const GLubyte* version  = glGetString(GL_VERSION);
-    
-    std::cout << "Renderer: " << renderer << std::endl;
-    std::cout << "OpenGL version supported " << version << std::endl;
-
-    // opengl configuration
-    glEnable(GL_DEPTH_TEST); // enable depth-testing
-    glDepthFunc(GL_LESS);    // depth-testing interprets a smaller value as "closer"
-
-    // vsync
-    // glfwSwapInterval(false);
-}
-
-Application::Application(int width, int height,int posX, int posY, std::string title)
-    : mState(stateReady), mWidth(width), mHeight(height), mTitle(title)
+Application::Application(int width, int height, int posX, int posY, const std::string &title)
+    : window(width, height, title), entityShader("Shaders/Entity.vert", "Shaders/Entity.frag"),
+      baseShader("Shaders/Basic.vert", "Shaders/Basic.frag")
 {
-    spdlog::info("GLFW initialized");
-    // 初始化 GLFW
-    if(!glfwInit()) {
-        throw std::runtime_error("Couldn't init GLFW");
+    if(INSTANCE == nullptr) {
+        INSTANCE = this;
     }
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    else {
+        throw std::runtime_error(std::string("Application already exists"));
+    }
 
-    // 创建窗口
-    mpWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
-    if(!mpWindow) {
-        glfwTerminate();
-        throw std::runtime_error("Couldn't create a window");
-    }
-	glfwSetWindowPos(mpWindow, posX, posY);
-    glfwMakeContextCurrent(mpWindow);
+    window.setWindowPos(posX, posY);
     // 载入GLAD
     if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         glfwTerminate();
@@ -83,40 +41,91 @@ Application::Application(int width, int height,int posX, int posY, std::string t
     const GLubyte *version  = glGetString(GL_VERSION);
     std::cout << "Renderer: " << renderer << std::endl;
     std::cout << "OpenGL version supported " << version << std::endl;
+
+#pragma region 设置全局属性
+    glEnable(GL_DEPTH_TEST); // enable depth-testing
+    glDepthFunc(GL_LESS);    // depth-testing interprets a smaller value as "closer"
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+    // glfwSwapInterval(GLFW_TRUE); // vsync
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // 线框模式
+    // glfwSetCursorPosCallback(window.GetHandle(), (GLFWcursorposfun) MouseCallback);
+    // pGUI = std::make_unique<EmbeddedUI>(window.GetHandle());
+    // pGUI->Init();
+    glCheckError(__FILE__, __LINE__);
+#pragma endregion
+
+
+#pragma region 创建实体
+    //    pCamera = std::make_unique<Camera>(glm::vec3(0.0f, 10.0f, 10.0f), -15.0f, -90.0f);
+    //
+    //    pLightDirectional = std::make_shared<LightDirectional>(
+    //        glm::vec3(0.0f, 12.0f, 5.0f),
+    //        glm::vec3(glm::radians(90.0f), 0.0f, glm::radians(45.0f)),
+    //        glm::vec3(0.9f, 0.9f, 1.0f));
+    //    pLightPoint = std::make_shared<LightPoint>(glm::vec3(1.0f, 8.0f, 3.0f));
+    //
+    //    models.emplace_back(std::make_shared<Model>(
+    //        "D:/SourceCode/CppCode/Dxr3DEngine/Assets/test/utah-teapot.obj"));
+    //    models[0]->SetPosition(glm::vec3(0.0f, 2.3f, -2.0f));
+    //    models.emplace_back(std::make_shared<Model>(
+    //        "D:/SourceCode/CppCode/Dxr3DEngine/Assets/nanosuit/nanosuit.obj"));
+    //    //
+    //    models.emplace_back(std::make_shared<Model>("D:/SourceCode/CppCode/OpenGL/Assets/test/test.obj"));
+
+#pragma endregion
+
+#pragma region 设置 uniform
+    //   entityShader.use();
+    //    entityShader.SetUniform("dirLight.direction", pLightDirectional->Direction);
+    //    entityShader.SetUniform("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+    //    entityShader.SetUniform("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+    //    entityShader.SetUniform("dirLight.specular", 0.5f, 0.5f, 0.5f);
+    //
+    //    entityShader.SetUniform("pointLight.position", pLightPoint->Position);
+    //    entityShader.SetUniform("pointLight.ambient", 0.05f, 0.05f, 0.05f);
+    //    entityShader.SetUniform("pointLight.diffuse", 0.8f, 0.8f, 0.8f);
+    //    entityShader.SetUniform("pointLight.specular", 1.0f, 1.0f, 1.0f);
+    //    entityShader.SetUniform("pointLight.constant", pLightPoint->Constant);
+    //    entityShader.SetUniform("pointLight.linear", pLightPoint->Linear);
+    //    entityShader.SetUniform("pointLight.quadratic", pLightPoint->Quadratic);
+
+#pragma endregion
 }
 
-GLFWwindow* Application::GetWindow() { return mpWindow; }
 
-void Application::Exit() { mState = stateExit; }
-
-float Application::GetFrameDeltaTime() { return mDeltaTime; }
-
-float Application::GetTime() const { return mTime; }
-
-void Application::Run()
+void Application::run()
 {
-    mState = stateRun;
-
     // Make the window's context current
-    glfwMakeContextCurrent(mpWindow);
+    glfwMakeContextCurrent(window.getHandle());
 
-    mTime = static_cast<float>(glfwGetTime());
+    while(!glfwWindowShouldClose(window.getHandle())) {
 
-    while(mState == stateRun) {
-        // compute new mTime and delta mTime
-        float t   = static_cast<float>(glfwGetTime());
-        mDeltaTime = t - mTime;
-        mTime      = t;
+        Timer::preUpdate();
+
+//        while(Timer::Accumulator() >= Timer::FixedDeltaTime()) {
+//            Timer::FixedUpdate();
+//            ECS_Engine->FixedUpdate(Timer::FixedDeltaTime().count());
+//
+//            /*cubeTransform.Rotate(1.0f, 1.0f, 1.0f);
+//            cube2Transform.Rotate(1.0f, 0.0f, 0.0f);
+//            cube3Transform.Rotate(0.5f, 0.5f, 0.0f);
+//            cube4Transform.Rotate(0.0f, 0.5f, 2.0f);*/
+//        }
+//        ECS_Engine->Update(Timer::DeltaTime().count());
 
         // detech window related changes
-        DetectWindowDimensionChange();
-        if(glfwWindowShouldClose( GetWindow()))
-            Exit();
+        window.detectWindowDimensionChange();
+
         // execute the frame code
-        Update();
+        update();
 
         // Swap Front and Back buffers (double buffering)
-        glfwSwapBuffers(mpWindow);
+       // glfwSwapBuffers(window.GetHandle());
 
         // Pool and process events
         glfwPollEvents();
@@ -125,24 +134,111 @@ void Application::Run()
     glfwTerminate();
 }
 
-void Application::DetectWindowDimensionChange()
+
+void Application::update()
 {
-    int w, h;
-    glfwGetWindowSize(GetWindow(), &w, &h);
-    mDimensionChanged = (w != mWidth || h != mHeight);
-    if(mDimensionChanged) {
-        mWidth = w;
-        mHeight = h;
-        glViewport(0, 0, mWidth, mHeight);
-    }
+    //    ProcessInput();
+    //    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //
+    // #pragma region 渲染场景
+    //    entityShader.Use();
+    //    entityShader.SetUniform("cameraPos", pCamera->Position);
+    //    entityShader.SetUniform("viewMat", pCamera->GetViewMat());
+    //    entityShader.SetUniform("projMat", pCamera->GetProjectionMat());
+    ////    Transform transform;
+    ////    transform.Position.y = 8.0f;
+    ////    transform.Position.x = 3.0f * sin(glfwGetTime());
+    ////    transform.Position.z = 3.0f * cos(glfwGetTime());
+    ////    pLightPoint->SetTransform(transform);
+    ////    entityShader.SetUniform("pointLight.position", transform.Position);
+    ////
+    ////    RenderModels();
+    //
+    //    entityShader.Unuse();
+    // #pragma endregion
+    //
+    //    // 渲染实体
+    //    RenderBasic({pLightPoint, pLightDirectional});
 }
 
-void Application::Update() { std::cout << "[INFO] : Update" << std::endl; }
+//
+// bool firstMouse = true;
+// double lastX    = 0.0f;
+// double lastY    = 0.0f;
+// void Application::MouseCallback(GLFWwindow *window, double xpos, double ypos)
+//{
+//    if(Application::INSTANCE == nullptr) return;
+//    if(firstMouse) {
+//        lastX      = xpos;
+//        lastY      = ypos;
+//        firstMouse = false;
+//    }
+//    auto dx = static_cast<float>(xpos - lastX);
+//    auto dy = static_cast<float>(lastY - ypos);
+//    Application::INSTANCE->pCamera->ProcessMouseMovement(dx, dy, 0.05);
+//    lastX = xpos;
+//    lastY = ypos;
+//}
+//
+// void Application::RenderBasic(const std::vector<std::shared_ptr<Entity>> &entities)
+//{
+//    baseShader.Use();
+//    for(auto &entity : entities) {
+//        baseShader.SetUniform("viewMat", pCamera->GetViewMat());
+//        baseShader.SetUniform("projMat", pCamera->GetProjectionMat());
+//        baseShader.SetUniform("modelMat", entity->GetModelMat());
+//        baseShader.SetUniform("objRawColor", vec3(0.5f, 1.0f, 0.0f));
+//        entity->Render(baseShader);
+//    }
+//    baseShader.Unuse();
+//}
+// void Application::RenderModels()
+//{
+//    for(auto model : models) {
+//        glm::mat4 modelMat(1.0f);
+//        modelMat = glm::translate(modelMat, model->GetPosition());
+//        entityShader.SetUniform("modelMat", modelMat);
+//        model->Render(entityShader);
+//    }
+//}
+// void Application::RenderSkybox()
+//{
+////        skyboxShader.Use();
+////        skyboxShader.SetUniform("viewMat",
+////        glm::mat4(glm::mat3(pCamera->GetViewMat())));
+////        skyboxShader.SetUniform("projMat", pCamera->GetProjectionMat());
+////        skyboxShader.SetUniform("skybox", 0);
+////        skybox->Render(skyboxShader);
+////        skyboxShader.Unuse();
+//}
+// void Application::ProcessInput()
+//{
+//    if(pCamera == nullptr) return;
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+//        glfwSetWindowShouldClose(window.GetHandle(), true);
+//    float cameraSpeed = 2.5f * GetFrameDeltaTime();
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_LEFT_SHIFT)) cameraSpeed *= 8.0f;
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_E))
+//        pCamera->Update(glm::vec3(0.0f, cameraSpeed, 0.0f));
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_SPACE))
+//        pCamera->Update(glm::vec3(0.0f, cameraSpeed, 0.0f));
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_LEFT_CONTROL))
+//        pCamera->Update(glm::vec3(0.0f, -cameraSpeed, 0.0f));
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_Q))
+//        pCamera->Update(glm::vec3(0.0f, -cameraSpeed, 0.0f));
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_W))
+//        pCamera->Update(cameraSpeed * pCamera->Forward);
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_S))
+//        pCamera->Update(-cameraSpeed * pCamera->Forward);
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_A))
+//        pCamera->Update(
+//            -glm::normalize(glm::cross(pCamera->Forward, vec3(.0, 1., .0))) *
+//            cameraSpeed);
+//    if(glfwGetKey(window.GetHandle(), GLFW_KEY_D))
+//        pCamera->Update(
+//            glm::normalize(glm::cross(pCamera->Forward, vec3(.0, 1., .0))) *
+//            cameraSpeed);
+//}
 
-int Application::GetWidth() { return mWidth; }
-
-int Application::GetHeight() { return mHeight; }
-
-float Application::GetWindowRatio() { return float(mWidth) / float(mHeight); }
-
-bool Application::WindowDimensionChanged() { return mDimensionChanged; }
+} // namespace dxr::gl

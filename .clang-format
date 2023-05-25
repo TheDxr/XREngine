@@ -6,11 +6,12 @@ AlignAfterOpenBracket: AlwaysBreak
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: false
 AlignOperands: false
+AllowShortIfStatementsOnASingleLine: WithoutElse
 AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false
 BinPackParameters: false
 # 列数限制
-ColumnLimit:  88
+ColumnLimit:  100
 BraceWrapping: 
   AfterCaseLabel: false
   AfterClass: true

@@ -12,7 +12,7 @@
 
 #include <spdlog/spdlog.h>
 
-namespace Dxr
+namespace dxr
 {
 class Application
 {
@@ -26,29 +26,29 @@ public:
     // delta mTime between frame and mTime from beginning
     // float GetFrameDeltaTime();
     // float GetTime() const;
-    void Run();
-    Window& GetWindow() { return window; }
+    void run();
+    Window&getWindow() { return window; }
 protected:
     Window window;
-    virtual void Update();
+    virtual void update();
     // Time:
     //    float mTime = 0.0f;
     //    float mDeltaTime = 0.0f;
     std::unique_ptr<Mesh> mesh;
 private:
-    void CreateCommandBuffers();
-    void CreatePipelineLayout();
-    void CreatePipeline();
-    void FreeCommandBuffers();
-    void LoadModels();
-    void RecreateSwapChain();
-    void RecordCommandBuffer(int imageIndex);
+    void createCommandBuffers();
+    void createPipelineLayout();
+    void createPipeline();
+    void freeCommandBuffers();
+    void loadModels();
+    void recreateSwapChain();
+    void recordCommandBuffer(int imageIndex);
 
     Device device_{window};
-    std::unique_ptr<SwapChain> swapChain;// {device_, window.GetExtent()};
-    VkPipelineLayout pipelineLayout;
+    std::unique_ptr<SwapChain> swapChain_;// {device_, window.GetExtent()};
+    VkPipelineLayout pipelineLayout_;
 
-    std::unique_ptr<Pipeline> pipeline;
-    std::vector<VkCommandBuffer> commandBuffers;
+    std::unique_ptr<Pipeline> pipeline_;
+    std::vector<VkCommandBuffer> commandBuffers_;
 };
 } // namespace Dxr

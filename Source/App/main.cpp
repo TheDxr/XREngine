@@ -1,12 +1,32 @@
-#include "DxrApplication.h"
-#include "LogManager.h"
-#include "Vulkan/Application.h"
+// #include "DxrApplication.h"
+// #include "LogManager.h"
+#include <random>
+#include <iostream>
+#include "../UnitTest.h"
 
-int main(int argc, const char *argv[])
+#include "Components/EntityKernel.h"
+#include "Components/Transform.h"
+#include "Core/Command.h"
+#include "Core/Ecs.h"
+#include "Systems/PhysicsSystem.h"
+#include "Timer.h"
+#include "Vulkan/Application.h"
+using namespace std;
+int main()
 {
-    LogManager::GetInstance().Init();
+    //    Timer timer;
+    //    timer.Start();
+    while(1) {
+        Timer::preUpdate();
+        //    while(Timer::Accumulator() >= Timer::FixedDeltaTime()) {
+        //        Timer::FixedUpdate();
+        //    }
+        cout << Timer::getAccumulator().count() << endl;
+
+    //    cout << Timer::DeltaTime().count() << endl;
+    }
+}
+//    Dxr::LogManager::Init();
 //    Dxr::Application app{800, 600, 0, 0, "Hello Vulkan!"};
 //    app.Run();
-    DxrApplication::GetInstance().Run();
-    return 0;
-}
+//    DxrApplication::GetInstance().Run();

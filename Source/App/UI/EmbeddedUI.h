@@ -1,14 +1,14 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
-#include "IGUI.h"
-class EmbeddedUI : public IGUI
+#include "Interface/IGuiInterface.h"
+class EmbeddedUI : public IGuiInterface
 {
 public:
     explicit EmbeddedUI(GLFWwindow *window);
     ~EmbeddedUI() override = default;
-    void Init() override;
-    void Render() override;
+    void init() override;
+    void render() override;
     void RenderLoadPanel();
 
     bool ShowDemoWindow    = true;

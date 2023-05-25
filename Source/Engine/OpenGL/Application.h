@@ -1,54 +1,57 @@
 #pragma once
 
+#include <memory>
 #include <string>
+#include <vector>
 
+//#include "../Components/Camera.h"
+//#include "Common/Light/LightDirectional.h"
+//#include "Common/Light/LightPoint.h"
+#include "Shader.h"
+#include "Window.h"
+
+namespace dxr::gl
+{
 struct GLFWwindow;
 class Application
 {
 public:
-	Application();
-	Application(int width, int height, int posX= 0, int posY = 0,
-	            std::string title = "Application");
-	virtual ~Application() = default;
-	Application(const Application&) = delete;
-	Application& operator=(const Application&) = delete;
-	Application(Application&&) = delete;
-	Application& operator=(const Application&&) = delete;
+    Application(
+        int width  = 800,
+        int height = 600,
+        int posX   = 0,
+        int posY   = 0,
 
-	// get the window id
-	GLFWwindow* GetWindow();
+        const std::string &title = "Application");
+    ~Application()                               = default;
+    Application(const Application &)             = delete;
+    Application &operator=(const Application &)  = delete;
+    Application(Application &&)                  = delete;
+    Application &operator=(const Application &&) = delete;
+    static Application *INSTANCE;
 
-	// window control
-	void Exit();
+    // application Run
+    void run();
 
-	// delta mTime between frame and mTime from beginning
-	float GetFrameDeltaTime();
-	float GetTime() const;
+    Window window;
+    void update();
 
-	// application Run
-	void Run();
-
-	// Application information
-	int GetWidth();
-	int GetHeight();
-	float GetWindowRatio();
-	bool WindowDimensionChanged();
+//    std::unique_ptr<Camera> pCamera;
+//    std::unique_ptr<IGUI> pGUI;
+//
+//    std::shared_ptr<LightDirectional> pLightDirectional;
+//    std::shared_ptr<LightPoint> pLightPoint;
+//    std::vector<std::shared_ptr<Entity>> models;
 
 protected:
-	enum State { stateReady, stateRun, stateExit };
-
-	State mState;
-	virtual void Update();
-		// Time:
-	float mTime = 0.0f;
-	float mDeltaTime = 0.0f;
-
-	// Dimensions:
-	int mWidth;
-	int mHeight;
-	std::string mTitle;
-	bool mDimensionChanged = false;
-	void DetectWindowDimensionChange();
+//    void RenderSkybox();
+//    void RenderBasic(const std::vector<std::shared_ptr<Entity>> &entities);
+//    void RenderModels();
+//    void ProcessInput();
 private:
-	GLFWwindow* mpWindow;
+    static void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+    ShaderProgram entityShader;
+    ShaderProgram baseShader;
 };
+} // namespace Dxr::gl
+

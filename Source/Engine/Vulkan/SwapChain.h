@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-namespace Dxr
+namespace dxr
 {
 
 class SwapChain
@@ -19,47 +19,46 @@ public:
     static constexpr int MAX_FRAMES_IN_FLIGHT = 2;
 
     SwapChain(Device &deviceRef, VkExtent2D extent);
-    SwapChain(
-        Device &deviceRef, VkExtent2D extent, std::shared_ptr<SwapChain> previous);
+    SwapChain(Device &deviceRef, VkExtent2D extent, std::shared_ptr<SwapChain> previous);
     ~SwapChain();
 
     SwapChain(const SwapChain &)      = delete;
     void operator=(const SwapChain &) = delete;
 
-    VkFramebuffer GetFrameBuffer(int index) { return swapChainFrameBuffers[index]; }
-    VkRenderPass GetRenderPass() { return renderPass; }
-    VkImageView GetImageView(int index) { return swapChainImageViews[index]; }
+    VkFramebuffer getFrameBuffer(int index) { return swapChainFrameBuffers[index]; }
+    VkRenderPass getRenderPass() { return renderPass; }
+    VkImageView getImageView(int index) { return swapChainImageViews[index]; }
     // 2或者3，取决于支持双重缓冲还是三重缓冲
-    size_t GetImageCount() { return swapChainImages.size(); }
-    VkFormat GetSwapChainImageFormat() { return swapChainImageFormat; }
-    VkExtent2D GetSwapChainExtent() { return swapChainExtent; }
-    uint32_t GetWidth() { return swapChainExtent.width; }
-    uint32_t GetHeight() { return swapChainExtent.height; }
-    float GetExtentAspectRatio()
+    size_t getImageCount() { return swapChainImages.size(); }
+    VkFormat getSwapChainImageFormat() { return swapChainImageFormat; }
+    VkExtent2D getSwapChainExtent() { return swapChainExtent; }
+    uint32_t getWidth() { return swapChainExtent.width; }
+    uint32_t getHeight() { return swapChainExtent.height; }
+    float getExtentAspectRatio()
     {
         return static_cast<float>(swapChainExtent.width) /
             static_cast<float>(swapChainExtent.height);
     }
-    VkFormat FindDepthFormat();
+    VkFormat findDepthFormat();
 
-    VkResult AcquireNextImage(uint32_t *imageIndex);
-    VkResult SubmitCommandBuffers(const VkCommandBuffer *buffers, uint32_t *imageIndex);
+    VkResult acquireNextImage(uint32_t *imageIndex);
+    VkResult submitCommandBuffers(const VkCommandBuffer *buffers, uint32_t *imageIndex);
 
 private:
-    void Init();
-    void CreateSwapChain();
-    void CreateImageViews();
-    void CreateDepthResources();
-    void CreateRenderPass();
-    void CreateFrameBuffers();
-    void CreateSyncObjects();
+    void init();
+    void createSwapChain();
+    void createImageViews();
+    void createDepthResources();
+    void createRenderPass();
+    void createFrameBuffers();
+    void createSyncObjects();
 
     // Helper functions
-    VkSurfaceFormatKHR ChooseSwapSurfaceFormat(
-        const std::vector<VkSurfaceFormatKHR> &availableFormats);
-    VkPresentModeKHR ChooseSwapPresentMode(
-        const std::vector<VkPresentModeKHR> &availablePresentModes);
-    VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR &capabilities);
+    VkSurfaceFormatKHR
+        chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR> &availableFormats);
+    VkPresentModeKHR
+        chooseSwapPresentMode(const std::vector<VkPresentModeKHR> &availablePresentModes);
+    VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR &capabilities);
 
     VkFormat swapChainImageFormat;
     VkExtent2D swapChainExtent;
@@ -85,4 +84,4 @@ private:
     size_t currentFrame = 0;
 };
 
-} // namespace Dxr
+} // namespace dxr

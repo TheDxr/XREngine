@@ -13,61 +13,61 @@ class SystemManager
 {
 public:
     template <typename T>
-    std::shared_ptr<T> RegisterSystem()
+    std::shared_ptr<T> registerSystem()
     {
         const char *typeName = typeid(T).name();
 
-        assert(mSystems.find(typeName) == mSystems.end() && "Registering system more than once.");
+        assert(systemMap.find(typeName) == systemMap.end() && "Registering system more than once.");
 
         auto system = std::make_shared<T>();
-        mSystems.insert({typeName, system});
+        systemMap.insert({typeName, system});
         return system;
     }
 
     template <typename T>
-    void SetSignature(Signature signature)
+    void setSignature(Signature signature)
     {
         const char *typeName = typeid(T).name();
 
-        assert(mSystems.find(typeName) != mSystems.end() && "System used before registered.");
+        assert(systemMap.find(typeName) != systemMap.end() && "System used before registered.");
 
         // 设置System的签名，该签名描述了该System包含了哪些Component
-        mSignatures.insert({typeName, signature});
+        signatureMap.insert({typeName, signature});
     }
 
-    void EntityDestroyed(Entity entity)
+    void entityDestroyed(Entity entity)
     {
-        for(auto const &pair : mSystems) {
+        for(auto const &pair : systemMap) {
             auto const &system = pair.second;
 
-            system->Entities.erase(entity);
+            system->entities.erase(entity);
         }
     }
 
-    void EntitySignatureChanged(Entity entity, Signature entitySignature)
+    void entitySignatureChanged(Entity entity, Signature entitySignature)
     {
-        for(auto const &pair : mSystems) {
+        for(auto const &pair : systemMap) {
             auto const &type            = pair.first;
             auto const &system          = pair.second;
-            auto const &systemSignature = mSignatures[type];
+            auto const &systemSignature = signatureMap[type];
 
             // 如果Entity包含了System所需的所有Component
             if((entitySignature & systemSignature) == systemSignature) {
-                system->Entities.insert(entity);
+                system->entities.insert(entity);
             }
             // 否则删除该Entity（说明此时System需要的某些Component没有被该Entity包含）
             // 此时System无法处理该Entity
             else {
-                system->Entities.erase(entity);
+                system->entities.erase(entity);
             }
         }
     }
 
 private:
     // 包含所有的签名
-    std::unordered_map<const char *, Signature> mSignatures{};
+    std::unordered_map<const char *, Signature> signatureMap{};
 
     // 包含所有的System
-    std::unordered_map<const char *, std::shared_ptr<System>> mSystems{};
+    std::unordered_map<const char *, std::shared_ptr<System>> systemMap{};
 };
 } // namespace ecs

@@ -9,10 +9,10 @@
 #include <vector>
 #include <vulkan/vulkan_core.h>
 
-namespace Dxr
+namespace dxr
 {
 
-std::vector<char> Pipeline::ReadFile(const std::string &filepath)
+std::vector<char> Pipeline::readFile(const std::string &filepath)
 {
     std::fstream file{
         filepath, std::ios::ate | std::ios::binary | std::ios::in};
@@ -37,23 +37,23 @@ Pipeline::Pipeline(
     PipelineConfigInfo &configInfo)
     : device_(device)
 {
-    CreateGraphicsPipeline(vertFilePath, fragFilePath, configInfo);
+    createGraphicsPipeline(vertFilePath, fragFilePath, configInfo);
 }
 
 Pipeline::~Pipeline()
 {
-    vkDestroyShaderModule(device_.GetDevice(), vertShaderModule, nullptr);
-    vkDestroyShaderModule(device_.GetDevice(), fragShaderModule, nullptr);
-    vkDestroyPipeline(device_.GetDevice(), graphicsPipeline, nullptr);
+    vkDestroyShaderModule(device_.getDevice(), vertShaderModule, nullptr);
+    vkDestroyShaderModule(device_.getDevice(), fragShaderModule, nullptr);
+    vkDestroyPipeline(device_.getDevice(), graphicsPipeline, nullptr);
 }
 
-void Pipeline::Bind(VkCommandBuffer commandBuffer)
+void Pipeline::bind(VkCommandBuffer commandBuffer)
 {
     vkCmdBindPipeline(
         commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
 }
 
-void Pipeline::CreateGraphicsPipeline(
+void Pipeline::createGraphicsPipeline(
     const std::string &vertFilePath,
     const std::string &fragFilePath,
     PipelineConfigInfo &configInfo)
@@ -65,11 +65,11 @@ void Pipeline::CreateGraphicsPipeline(
     assert(
         configInfo.renderPass != VK_NULL_HANDLE &&
         "无法创建pipeline : 无renderPass");
-    auto vertCode = ReadFile(vertFilePath);
-    auto fragCode = ReadFile(fragFilePath);
+    auto vertCode = readFile(vertFilePath);
+    auto fragCode = readFile(fragFilePath);
 
-    CreateShaderModule(vertCode, &vertShaderModule);
-    CreateShaderModule(fragCode, &fragShaderModule);
+    createShaderModule(vertCode, &vertShaderModule);
+    createShaderModule(fragCode, &fragShaderModule);
 
     VkPipelineShaderStageCreateInfo shaderStages[2];
     shaderStages[0].sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
@@ -88,8 +88,8 @@ void Pipeline::CreateGraphicsPipeline(
     shaderStages[1].pNext               = nullptr;
     shaderStages[1].pSpecializationInfo = nullptr;
 
-    auto bindingDescriptions   = Dxr::Mesh::Vertex::GetBindingDescriptions();
-    auto attributeDescriptions = Dxr::Mesh::Vertex::GetAttributeDescriptions();
+    auto bindingDescriptions   = dxr::Mesh::Vertex::GetBindingDescriptions();
+    auto attributeDescriptions = dxr::Mesh::Vertex::GetAttributeDescriptions();
 
     VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
     vertexInputInfo.sType =
@@ -123,7 +123,7 @@ void Pipeline::CreateGraphicsPipeline(
     pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
     if(vkCreateGraphicsPipelines(
-           device_.GetDevice(),
+           device_.getDevice(),
            VK_NULL_HANDLE,
            1,
            &pipelineInfo,
@@ -133,7 +133,7 @@ void Pipeline::CreateGraphicsPipeline(
     }
 }
 
-void Pipeline::CreateShaderModule(
+void Pipeline::createShaderModule(
     const std::vector<char> &code, VkShaderModule *shaderModule)
 {
     VkShaderModuleCreateInfo createInfo{};
@@ -142,13 +142,13 @@ void Pipeline::CreateShaderModule(
     createInfo.pCode    = reinterpret_cast<const uint32_t *>(code.data());
 
     if(vkCreateShaderModule(
-           device_.GetDevice(), &createInfo, nullptr, shaderModule) !=
+           device_.getDevice(), &createInfo, nullptr, shaderModule) !=
        VK_SUCCESS) {
         throw std::runtime_error("failed to create shader module");
     }
 }
 
-void Pipeline::DefaultPipelineConfigInfo(PipelineConfigInfo &configInfo)
+void Pipeline::defaultPipelineConfigInfo(PipelineConfigInfo &configInfo)
 {
 
     configInfo.inputAssemblyInfo.sType =
