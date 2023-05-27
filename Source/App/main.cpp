@@ -10,21 +10,13 @@
 #include "Core/Ecs.h"
 #include "Systems/PhysicsSystem.h"
 #include "Timer.h"
-#include "Vulkan/Application.h"
+#include "OpenGL/Application.h"
+//#include "Vulkan/Application.h"
 using namespace std;
 int main()
 {
-    //    Timer timer;
-    //    timer.Start();
-    while(1) {
-        Timer::preUpdate();
-        //    while(Timer::Accumulator() >= Timer::FixedDeltaTime()) {
-        //        Timer::FixedUpdate();
-        //    }
-        cout << Timer::getAccumulator().count() << endl;
-
-    //    cout << Timer::DeltaTime().count() << endl;
-    }
+   dxr::gl::Application app{800, 600, 0, 0, "Hello GL"};
+   app.run();
 }
 //    Dxr::LogManager::Init();
 //    Dxr::Application app{800, 600, 0, 0, "Hello Vulkan!"};

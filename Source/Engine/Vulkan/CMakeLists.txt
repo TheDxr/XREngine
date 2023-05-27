@@ -26,5 +26,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${SOURCE_DIR}/Engine/Vulkan)
 
 target_link_directories(${PROJECT_NAME} PUBLIC "${VULKAN_SDK_DIR}/Lib")
 target_link_libraries(${PROJECT_NAME} PUBLIC vulkan-1)
-target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
-target_link_libraries(${PROJECT_NAME} PUBLIC Resources)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+target_link_libraries(${PROJECT_NAME} PRIVATE Resources)

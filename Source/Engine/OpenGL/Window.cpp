@@ -1,5 +1,9 @@
 #include "Window.h"
 
+#include <glad/glad.h>
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+#include <iostream>
 #include <spdlog/spdlog.h>
 #include <stdexcept>
 namespace dxr::gl
@@ -9,7 +13,6 @@ Window::Window(int width, int height, const std::string &title) : width(width), 
     if(!glfwInit()) {
         throw std::runtime_error("Couldn't init GLFW");
     }
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     // setting the opengl version
     int major = 3;
     int minor = 2;
@@ -18,17 +21,29 @@ Window::Window(int width, int height, const std::string &title) : width(width), 
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     // glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-    window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
-    if(!window) {
+    window_ = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+    if(!window_) {
         glfwTerminate();
         throw std::runtime_error("Couldn't create a window");
     }
+    //glfwSetWindowPos(window_, 400, 240);
+    glfwMakeContextCurrent(window_);
+    // 载入GLAD
+    if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        glfwTerminate();
+        throw std::runtime_error(std::string("Could initialize GLAD"));
+    }
+    // 获取版本信息
+    const GLubyte *renderer = glGetString(GL_RENDERER);
+    const GLubyte *version  = glGetString(GL_VERSION);
+    std::cout << "Renderer: " << renderer << std::endl;
+    std::cout << "OpenGL version supported " << version << std::endl;
     spdlog::info("GLFW window initialized");
 }
 void Window::detectWindowDimensionChange()
 {
     int w, h;
-    glfwGetWindowSize(window, &w, &h);
+    glfwGetWindowSize(window_, &w, &h);
     if(w != width || h != height) {
         dimensionChanged = true;
         width            = w;
@@ -40,20 +55,20 @@ void Window::detectWindowDimensionChange()
 }
 float Window::getWindowRatio()
 {
-    glfwGetWindowSize(window, &width, &height);
+    glfwGetWindowSize(window_, &width, &height);
     return (float)width / (float)height;
 }
 int Window::getHeight()
 {
-    glfwGetWindowSize(window, &width, &height);
+    glfwGetWindowSize(window_, &width, &height);
     return height;
 }
 int Window::getWidth()
 {
-    glfwGetWindowSize(window, &width, &height);
+    glfwGetWindowSize(window_, &width, &height);
     return width;
 }
 bool Window::windowDimensionChanged() { return dimensionChanged; }
-void Window::setWindowPos(int x, int y) { glfwSetWindowPos(window, x, y); }
+void Window::setWindowPos(int x, int y) { glfwSetWindowPos(window_, x, y); }
 
 } // namespace dxr::gl

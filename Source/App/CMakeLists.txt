@@ -49,10 +49,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${DEP_DIR}/spdlog/include)
 
 #target_link_libraries(${PROJECT_NAME} PUBLIC glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE assimp::assimp)
-target_link_libraries(${PROJECT_NAME} PRIVATE OpenGLEngine)
-target_link_libraries(${PROJECT_NAME} PRIVATE VulkanEngine)
-target_link_libraries(${PROJECT_NAME} PRIVATE Resources)
-target_link_libraries(${PROJECT_NAME} PRIVATE ECS)
+target_link_libraries(${PROJECT_NAME} PUBLIC OpenGLEngine)
+#target_link_libraries(${PROJECT_NAME} PRIVATE VulkanEngine)
+#target_link_libraries(${PROJECT_NAME} PRIVATE Resources)
+#target_link_libraries(${PROJECT_NAME} PRIVATE ECS)
 
 
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "App")

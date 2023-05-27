@@ -26,6 +26,8 @@ set(SPDLOG_INCLUDE_DIR ${DEP_DIR}/spdlog/include)
 set(IMGUI_INCLUDE_DIR  "D:/ProgramData/imgui-1.89.5"
         "D:/ProgramData/imgui-1.89.5/backends")
 set(VULKAN_SDK_DIR D:/VulkanSDK/1.3.216.0)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
 add_definitions(-DUNICODE)
 add_definitions(-D_UNICODE)

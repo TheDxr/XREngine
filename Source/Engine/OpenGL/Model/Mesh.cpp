@@ -74,13 +74,13 @@ void Mesh::draw(ShaderProgram &shaderProgram)
 
     //    if(diffuseId != 0) {
     //        glActiveTexture(GL_TEXTURE0 + diffuseId);
-    //        shaderProgram.SetUniform("material.diffuse", diffuseId);
+    //        shaderProgram.setUniform("material.diffuse", diffuseId);
     //        glBindTexture(GL_TEXTURE_2D, diffuseId);
     //    }
     //
     //    if(specularId != 0) {
     //        glActiveTexture(GL_TEXTURE0 + specularId);
-    //        shaderProgram.SetUniform("material.specular", specularId);
+    //        shaderProgram.setUniform("material.specular", specularId);
     //        glBindTexture(GL_TEXTURE_2D, specularId);
     //    }
 

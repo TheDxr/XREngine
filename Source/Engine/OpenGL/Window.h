@@ -1,11 +1,9 @@
 #pragma once
 
-#ifndef GLFW_INCLUDE_NONE
-#define GLFW_INCLUDE_NONE
-#endif
-#include <GLFW/glfw3.h>
+
 #include <string>
 
+struct GLFWwindow;
 namespace dxr::gl {
 
     class Window {
@@ -20,7 +18,8 @@ namespace dxr::gl {
 
         void setWindowPos(int x, int y);
 
-        GLFWwindow *getHandle() { return window; }
+
+        GLFWwindow *getHandle() { return window_; }
 
         int getWidth();
 
@@ -34,7 +33,7 @@ namespace dxr::gl {
 
     private:
         bool dimensionChanged = false;
-        GLFWwindow *window;
+        GLFWwindow *window_;
         int width;
         int height;
     };

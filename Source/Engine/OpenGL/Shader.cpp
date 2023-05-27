@@ -5,6 +5,7 @@
 #include <iostream>
 #include <spdlog/spdlog.h>
 #include <vector>
+#include <glad/glad.h>
 
 namespace dxr::gl
 {

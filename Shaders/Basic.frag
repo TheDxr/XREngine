@@ -2,7 +2,6 @@
 
 out vec4 FragColor;
 in vec3 FragPos;
-
 uniform vec3 objRawColor;
 
 void main()
