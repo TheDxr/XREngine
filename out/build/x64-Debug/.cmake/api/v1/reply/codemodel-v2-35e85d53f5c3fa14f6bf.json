@@ -1,0 +1,217 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						7
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Source",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"jsonFile" : "directory-Source-Debug-93ebefb0dc4084c9ccf4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Source"
+				},
+				{
+					"build" : "Source/App",
+					"jsonFile" : "directory-Source.App-Debug-f957ceb987c91ab54580.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "Source/App",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "Source/ECS",
+					"jsonFile" : "directory-Source.ECS-Debug-6afcca3072c14eb158b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "Source/ECS",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Source/Resources",
+					"jsonFile" : "directory-Source.Resources-Debug-6988da0348306591ee24.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "Source/Resources",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "Source/Engine/OpenGL",
+					"jsonFile" : "directory-Source.Engine.OpenGL-Debug-1dc17b66c5a13730a6a2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "Source/Engine/OpenGL",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "Source/Engine/Vulkan",
+					"jsonFile" : "directory-Source.Engine.Vulkan-Debug-659e97a1e1dc1df448c7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "Source/Engine/Vulkan",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "Shaders",
+					"jsonFile" : "directory-Shaders-Debug-5eb6ac5fdc21fca73b48.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Shaders",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					],
+					"name" : "Dxr3DEngine",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "Application::@73aa5f705ad06155d326",
+					"jsonFile" : "target-Application-Debug-f85f80532c53eb5baa11.json",
+					"name" : "Application",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ECS::@e2fd2e971012e7ce695a",
+					"jsonFile" : "target-ECS-Debug-fbd22514adbcfe4b24b9.json",
+					"name" : "ECS",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "OpenGLEngine::@5bcae05971efdd53f268",
+					"jsonFile" : "target-OpenGLEngine-Debug-1f772e8cecc09e2a82de.json",
+					"name" : "OpenGLEngine",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "Resources::@eb30bea19f41ff0420ff",
+					"jsonFile" : "target-Resources-Debug-8395e9ba5bc1c6450863.json",
+					"name" : "Resources",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "Shaders::@ab633c88de52bb51abc3",
+					"jsonFile" : "target-Shaders-Debug-979ce709cb51539ca508.json",
+					"name" : "Shaders",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "VulkanEngine::@add0a36755dd474904db",
+					"jsonFile" : "target-VulkanEngine-Debug-de468f4b629fae92fb20.json",
+					"name" : "VulkanEngine",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+		"source" : "F:/SourceCode/C++/Dxr3DEngine"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

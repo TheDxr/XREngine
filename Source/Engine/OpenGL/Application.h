@@ -26,7 +26,7 @@ public:
     void run();
     Window window;
     void update();
-
+    static int getOne(){return 1;}
 protected:
 //    void RenderSkybox();
 //    void RenderBasic(const std::vector<std::shared_ptr<Entity>> &entities);

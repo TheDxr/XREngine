@@ -62,7 +62,7 @@ Application::Application(int width, int height, int posX, int posY, const std::s
     pLightPoint = std::make_shared<LightPoint>(glm::vec3(1.0f, 8.0f, 3.0f));
 
     models.emplace_back(
-        std::make_shared<Model>("D:/SourceCode/CppCode/Dxr3DEngine/Assets/test/utah-teapot.obj"));
+        std::make_shared<Model>("F:\\Assets\\Models\\utah-teapot-obj\\utah-teapot.obj"));
     //    models[0]->SetPosition(glm::vec3(0.0f, 2.3f, -2.0f));
     models.emplace_back(
         std::make_shared<Model>("D:/SourceCode/CppCode/Dxr3DEngine/Assets/nanosuit/nanosuit.obj"));

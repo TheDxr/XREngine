@@ -1,0 +1,218 @@
+[
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\main.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\App\\main.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\App\\main.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\main.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\UI\\EmbeddedUI.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\App\\UI\\EmbeddedUI.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\App\\UI\\EmbeddedUI.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\UI\\EmbeddedUI.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_demo.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_demo.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_demo.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_demo.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_draw.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_draw.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_draw.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_draw.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\backends\\imgui_impl_glfw.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\backends\\imgui_impl_glfw.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\backends\\imgui_impl_glfw.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\backends\\imgui_impl_glfw.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\backends\\imgui_impl_opengl3.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\backends\\imgui_impl_opengl3.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\backends\\imgui_impl_opengl3.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\backends\\imgui_impl_opengl3.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_tables.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_tables.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_tables.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_tables.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -ID:\\ProgramData\\imgui-1.89.5 -ID:\\ProgramData\\imgui-1.89.5\\backends -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_widgets.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_widgets.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\imgui\\imgui_widgets.cpp",
+  "output": "Source\\App\\CMakeFiles\\Application.dir\\__\\__\\Dependencies\\imgui\\imgui_widgets.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\Components\\Camera.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Components\\Camera.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Components\\Camera.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\Components\\Camera.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\Components\\EntityKernel.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Components\\EntityKernel.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Components\\EntityKernel.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\Components\\EntityKernel.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\Components\\Transform.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Components\\Transform.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Components\\Transform.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\Components\\Transform.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\ECS.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\ECS.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\ECS.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\ECS.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\Systems\\CameraControlSystem.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Systems\\CameraControlSystem.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Systems\\CameraControlSystem.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\Systems\\CameraControlSystem.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\Systems\\PhysicsSystem.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Systems\\PhysicsSystem.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Systems\\PhysicsSystem.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\Systems\\PhysicsSystem.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE -I\"D:\\Program Files\\vcpkg\\packages\\glm_x64-windows\\include\" -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\ECS\\CMakeFiles\\ECS.dir\\Systems\\PlayerControlSystem.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Systems\\PlayerControlSystem.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS\\Systems\\PlayerControlSystem.cpp",
+  "output": "Source\\ECS\\CMakeFiles\\ECS.dir\\Systems\\PlayerControlSystem.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Resources\\CMakeFiles\\Resources.dir\\Stopwatch.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources\\Stopwatch.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources\\Stopwatch.cpp",
+  "output": "Source\\Resources\\CMakeFiles\\Resources.dir\\Stopwatch.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DUNICODE -D_DEBUG -D_UNICODE /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Resources\\CMakeFiles\\Resources.dir\\Timer.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources\\Timer.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources\\Timer.cpp",
+  "output": "Source\\Resources\\CMakeFiles\\Resources.dir\\Timer.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Application.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Application.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Application.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Application.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Camera.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Camera.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Camera.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Camera.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Light\\LightDirectional.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Light\\LightDirectional.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Light\\LightDirectional.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Light\\LightDirectional.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Light\\LightPoint.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Light\\LightPoint.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Light\\LightPoint.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Light\\LightPoint.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Light\\LightSpot.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Light\\LightSpot.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Common\\Light\\LightSpot.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Common\\Light\\LightSpot.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Material.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Material.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Material.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Material.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Mesh.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Mesh.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Mesh.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Mesh.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Model.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Model.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Model.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Model.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Texture.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Texture.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Model\\Texture.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Model\\Texture.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Shader.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Shader.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Shader.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Shader.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Window.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Window.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\Window.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\Window.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\ECS -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\glError.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\glError.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\OpenGL\\glError.cpp",
+  "output": "Source\\Engine\\OpenGL\\CMakeFiles\\OpenGLEngine.dir\\glError.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -ID:\\VulkanSDK\\1.3.216.0\\Include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Application.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Application.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Application.cpp",
+  "output": "Source\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Application.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -ID:\\VulkanSDK\\1.3.216.0\\Include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Device.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Device.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Device.cpp",
+  "output": "Source\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Device.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -ID:\\VulkanSDK\\1.3.216.0\\Include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Mesh.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Mesh.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Mesh.cpp",
+  "output": "Source\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Mesh.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -ID:\\VulkanSDK\\1.3.216.0\\Include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Pipeline.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Pipeline.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Pipeline.cpp",
+  "output": "Source\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Pipeline.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -ID:\\VulkanSDK\\1.3.216.0\\Include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\SwapChain.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\SwapChain.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\SwapChain.cpp",
+  "output": "Source\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\SwapChain.cpp.obj"
+},
+{
+  "directory": "F:/SourceCode/C++/Dxr3DEngine/out/build/x64-Debug",
+  "command": "E:\\PROGRA~2\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1440~1.338\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DGLFW_DLL -DUNICODE -D_DEBUG -D_UNICODE -ID:\\VulkanSDK\\1.3.216.0\\Include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Dependencies\\spdlog\\include -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Resources -IF:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan -external:I\"D:\\Program Files\\vcpkg\\installed\\x64-windows\\include\" -external:W0 /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd /FoSource\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Window.cpp.obj /FdTARGET_COMPILE_PDB /FS -c F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Window.cpp",
+  "file": "F:\\SourceCode\\C++\\Dxr3DEngine\\Source\\Engine\\Vulkan\\Window.cpp",
+  "output": "Source\\Engine\\Vulkan\\CMakeFiles\\VulkanEngine.dir\\Window.cpp.obj"
+}
+]
